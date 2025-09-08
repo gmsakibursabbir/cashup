@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+
+    <!-- favicon  -->
+
+    <!-- google font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- custom css -->
+    <link rel="stylesheet" href="./css/style.min.css" />
+  </head>
+
+  <body class="full-bg">
+    <!-- header -->
+    <header>
+      <div class="w-full md:max-w-[1158px] mx-auto px-5 md:px-0 pt-10">
+        <nav
+          class="flex flex-row items-center justify-center md:justify-start w-full"
+        >
+          <a href="./index.html">
+            <img
+              src="./img/cash-logo-white.svg"
+              alt="logo"
+              class="w-[160px] md:w-[163px]"
+            />
+          </a>
+        </nav>
+      </div>
+    </header>
+    <!-- main -->
+    <main>
+      <!-- hero -->
+      <section class="pt-[66px] md:pt-[193px] pb-4">
+        <div
+          class="w-full md:max-w-[1158px] mx-auto px-5 flex flex-col md:flex-row items-center justify-center"
+        >
+          <div
+            class="w-full md:w-1/2 flex flex-col items-center md:items-start justify-start text-center md:text-start gap-4 md:gap-6"
+          >
+            <h1
+              class="text-[34px] md:text-4xl font-black text-[#FBFBFB] max-w-[475px]"
+            >
+              Toutes les cartes sont entre vos mains
+            </h1>
+            <p
+              class="text-[#FBFBFB] font-medium text-lg md:text-2xl max-w-[506px]"
+            >
+              Optimisez vos processus d'entreprise avec nos solutions
+              innovantes. Réduisez les coûts, augmentez la productivité et
+              améliorez la satisfaction client grâce à notre expertise en audit
+              de processus.
+            </p>
+          </div>
+
+          <div
+            class="w-full md:w-1/2 flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-8 items-center justify-center"
+          >
+            <div
+              class="w-full relative transform rotate-[-5deg] min-w-[430px] -right-28"
+            >
+              <img
+                src="./img/home/card-yellow.png"
+                alt="Card Background Yellow"
+                class="w-full"
+              />
+              <div
+                class="absolute inset-0 flex flex-col items-center justify-center text-center"
+              >
+                <div
+                  class="max-w-[274px] mx-auto space-y-[15px] md:space-y-[25px]"
+                >
+                  <h3
+                    class="text-xl md:text-[30px] font-semibold md:font-black text-[#645114]"
+                  >
+                    Fonctionnalités
+                  </h3>
+                  <p class="text-[#4D411C] text-xs md:text-lg font-semibold">
+                    Explorez nos outils avancés pour optimiser vos performances
+                    et automatiser vos processus métier.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="w-full relative transform rotate-[5deg] min-w-[430px] -top-10 right-20"
+            >
+              <img
+                src="./img/home/card-blue.png"
+                alt="Card Background Blue"
+                class="w-full"
+              />
+              <div
+                class="absolute inset-0 flex flex-col items-center justify-center text-center"
+              >
+                <div
+                  class="max-w-[274px] mx-auto space-y-[15px] md:space-y-[25px]"
+                >
+                  <h3
+                    class="text-xl md:text-[30px] font-semibold md:font-black text-[#1C424D]"
+                  >
+                    Correctifs
+                  </h3>
+                  <p class="text-[#1C424D] text-xs md:text-lg font-semibold">
+                    Identifiez et résolvez rapidement les problèmes pour
+                    maintenir une efficacité optimale.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="w-full md:max-w-[1158px] mx-auto px-5 md:px-0 pt-[64px] md:pt-[112px] flex justify-center items-center"
+        >
+          <button
+            class="px-[38px] py-[16px] md:px-[70px] md:py-[22px] flex flex-row items-center rounded-full gradiant-btn text-[#312C00] text-xs lg:text-lg font-semibold font-poppins shadow-md gap-[5px] lg:gap-4 cursor-pointer"
+          >
+            Voir plus
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="10"
+              height="16"
+              viewBox="0 0 10 16"
+              fill="none"
+            >
+              <path
+                d="M1.875 14.25L8.125 8L1.875 1.75"
+                stroke="#1E1E1E"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </section>
+      <!-- video -->
+      <section class="py-[82px] relative overflow-hidden">
+        <div
+          class="w-full md:max-w-[1008px] mx-auto px-5 relative z-50"
+        >
+          <!-- video container -->
+          <div
+            id="video-container"
+            class="relative w-full bg-black rounded-[30px] overflow-hidden shadow-2xl cursor-pointer aspect-video"
+            data-video-id="VIDEO_ID_HERE"
+          >
+            <img
+              src="./img/home/yt.png"
+              alt="Video Thumbnail"
+              class="absolute inset-0 w-full h-full object-cover"
+            />
+
+            <div
+              id="play-button-overlay"
+              class="absolute inset-0 flex items-center justify-center"
+            ></div>
+          </div>
+
+          <!-- corner images OUTSIDE the overflow-hidden box -->
+          <img
+            src="./img/home/top-left.png"
+            alt="corner"
+            class="absolute -top-10 -right-10 z-30"
+          />
+          <img
+            src="./img/home/bottom-left.png"
+            alt="corner"
+            class="absolute -bottom-10 -left-10 z-30"
+          />
+        </div>
+        <!-- stripe -->
+        <div
+          class="absolute inset-0 top-0 left-0 translate-y-30 flex flex-col items-center gap-[50px]"
+        >
+          <div class="h-[117px] w-full stripe-yellow rotate-[-1.003deg]"></div>
+          <div class="h-[117px] w-full stripe-green rotate-[-1.003deg]"></div>
+          <div class="h-[117px] w-full stripe-blue rotate-[-1.003deg]"></div>
+        </div>
+      </section>
+      <!-- chats -->
+      <section class="pt-[82px]">
+        <div
+          class="w-full md:max-w-[1158px] mx-auto px-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          <!-- 1 -->
+          <div class="relative max-w-[293px]">
+            <!-- Image -->
+            <img src="./img/home/yellow-card.png" alt="yellow" />
+
+            <!-- Text on top (centered) -->
+            <div
+              class="absolute inset-0 top-7 flex flex-col items-center justify-center text-center px-[30px] gap-5"
+            >
+              <p
+                class="text-[#2D2D2D] font-montserrat font-normal text-start text-lg italic"
+              >
+                "CastUp a révolutionné notre approche des processus. Nos
+                performances ont augmenté de 40%"
+              </p>
+              <span
+                class="text-[#2D2D2D] font-winky text-sm font-semibold self-end"
+              >
+                Pierre Dubois - PDG
+              </span>
+            </div>
+          </div>
+          <!-- 2 -->
+          <div class="relative max-w-[350px]">
+            <!-- Image -->
+            <img
+              src="./img/home/blue-card.png"
+              alt="yellow"
+              class="absolute top-14 -left-13"
+            />
+
+            <!-- Text on top (centered) -->
+            <div
+              class="absolute inset-0 top-7 flex flex-col items-center justify-center text-center px-[30px] gap-5 max-w-[300px]"
+            >
+              <p
+                class="text-[#2D2D2D] font-montserrat font-normal text-start text-lg italic"
+              >
+                "CastUp a révolutionné notre approche des processus. Nos
+                performances ont augmenté de 40%"
+              </p>
+              <span
+                class="text-[#2D2D2D] font-winky text-sm font-semibold self-end"
+              >
+                Pierre Dubois - PDG
+              </span>
+            </div>
+          </div>
+          <!-- 3 -->
+          <div class="relative max-w-[350px]">
+            <!-- Image -->
+            <img
+              src="./img/home/green-card.png"
+              alt="yellow"
+              class="absolute -top-10 -left-12"
+            />
+
+            <!-- Text on top (centered) -->
+            <div
+              class="absolute inset-0 top-7 flex flex-col items-center justify-center text-center px-[30px] gap-5 max-w-[300px]"
+            >
+              <p
+                class="text-[#2D2D2D] font-montserrat font-normal text-start text-lg italic"
+              >
+                "CastUp a révolutionné notre approche des processus. Nos
+                performances ont augmenté de 40%"
+              </p>
+              <span
+                class="text-[#2D2D2D] font-winky text-sm font-semibold self-end"
+              >
+                Pierre Dubois - PDG
+              </span>
+            </div>
+          </div>
+          <!-- 4 -->
+          <div class="relative max-w-[305px]">
+            <!-- Image -->
+            <img
+              src="./img/home/green-card-2.png"
+              alt="yellow"
+              class="absolute -top-0 -left-0"
+            />
+
+            <!-- Text on top (centered) -->
+            <div
+              class="absolute inset-0 top-30 flex flex-col items-center justify-center text-center px-[30px] gap-5 max-w-[300px]"
+            >
+              <p
+                class="text-[#2D2D2D] font-montserrat font-normal text-start text-lg italic"
+              >
+                "CastUp a révolutionné notre approche des processus. Nos
+                performances ont augmenté de 40%"
+              </p>
+              <span
+                class="text-[#2D2D2D] font-winky text-sm font-semibold self-end"
+              >
+                Pierre Dubois - PDG
+              </span>
+            </div>
+          </div>
+          <!-- 5 -->
+          <div class="relative max-w-[320px]">
+            <!-- Image -->
+            <img
+              src="./img/home/blue-card-2.png"
+              alt="yellow"
+              class="absolute -top-10 left-1"
+            />
+
+            <!-- Text on top (centered) -->
+            <div
+              class="absolute inset-0 top-30 flex flex-col items-center justify-center text-center px-[30px] gap-5 max-w-[300px]"
+            >
+              <p
+                class="text-[#2D2D2D] font-montserrat font-normal text-start text-lg italic"
+              >
+                "CastUp a révolutionné notre approche des processus. Nos
+                performances ont augmenté de 40%"
+              </p>
+              <span
+                class="text-[#2D2D2D] font-winky text-sm font-semibold self-end"
+              >
+                Pierre Dubois - PDG
+              </span>
+            </div>
+          </div>
+          <!-- 6 -->
+          <div class="relative max-w-[320px]">
+            <!-- Image -->
+            <img
+              src="./img/home/yellow-card-2.png"
+              alt="yellow"
+              class="absolute -top-0 left-0"
+            />
+
+            <!-- Text on top (centered) -->
+            <div
+              class="absolute inset-0 top-30 flex flex-col items-center justify-center text-center px-[30px] gap-5 max-w-[300px]"
+            >
+              <p
+                class="text-[#2D2D2D] font-montserrat font-normal text-start text-lg italic"
+              >
+                "CastUp a révolutionné notre approche des processus. Nos
+                performances ont augmenté de 40%"
+              </p>
+              <span
+                class="text-[#2D2D2D] font-winky text-sm font-semibold self-end"
+              >
+                Pierre Dubois - PDG
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="mt-[300px] h-[148px] md:h-[663px] relative">
+      <img src="./img/footers-bg.png" alt="footer" class="w-full h-full" />
+      <span
+        class="absolute bottom-5 left-1/2 -translate-x-1/2 text-[22px] font-bold font-winky text-white underline"
+      >
+        Mentions légales
+      </span>
+    </footer>
+    <!-- js -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const videoContainer = document.getElementById("video-container");
+        const playButtonOverlay = document.getElementById(
+          "play-button-overlay"
+        );
+        const videoId = videoContainer.dataset.videoId;
+
+        if (videoId && playButtonOverlay) {
+          playButtonOverlay.addEventListener("click", () => {
+            // Create the YouTube iframe
+            const iframe = document.createElement("iframe");
+            iframe.setAttribute("allowfullscreen", "");
+            iframe.setAttribute("frameborder", "0");
+            iframe.setAttribute("allow", "autoplay; encrypted-media");
+            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+
+            // Set styles for the iframe to fill the container
+            iframe.style.width = "100%";
+            iframe.style.height = "100%";
+            iframe.style.position = "absolute";
+            iframe.style.top = "0";
+            iframe.style.left = "0";
+
+            // Replace the thumbnail and overlay with the iframe
+            videoContainer.innerHTML = ""; // Clear existing content
+            videoContainer.appendChild(iframe);
+            videoContainer.classList.remove("cursor-pointer");
+          });
+        }
+      });
+    </script>
+    <script src="./js/index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Connexion</title>
+
+    <!-- favicon  -->
+
+        <!-- google font  -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- custom css -->
+    <link rel="stylesheet" href="./css/style.min.css" />
+  </head>
+
+  <body>
+    <section
+      class="w-screen h-screen bg-cover bg-center flex items-center justify-center"
+      style="background-image: url('./img/connexion/connexion-bg.png')"
+    >
+      <div class="max-w-[528px] w-full relative px-5">
+        <!-- all items -->
+        <div>
+          <img
+            src="./img/connexion/cloud-01.png"
+            alt="cloud"
+            class="absolute -top-26 -left-66 z-10 hidden md:block"
+          />
+        </div>
+        <div>
+          <img
+            src="./img/connexion/cloud-02.png"
+            alt="cloud"
+            class="absolute -top-26 -right-54 z-30 hidden md:block"
+          />
+        </div>
+        <div>
+          <img
+            src="./img/connexion/cloud-03.png"
+            alt="cloud"
+            class="absolute bottom-37 -left-64 z-30 hidden md:block"
+          />
+        </div>
+        <div>
+          <img
+            src="./img/connexion/cloud-04.png"
+            alt="cloud"
+            class="absolute -bottom-30 -right-65 z-10 hidden md:block"
+          />
+        </div>
+        <!-- main form -->
+        <div
+          class="bg-white rounded-[30px] md:rounded-3xl connexion-shadow relative z-20"
+        >
+          <!-- 1 -->
+          <div
+            class="px-[38px] py-5 md:px-[26px] md:pt-[24px] md:pb-[39px] rounded-t-[30px] md:rounded-t-3xl connexion-gradiant space-y-[14px] md:space-y-10"
+          >
+            <h1
+              class="flex flex-row justify-center items-center text-[22px] md:text-[32px] font-bold gap-[10px] md:gap-4 text-primary"
+            >
+              <span>Bienvenue</span>
+              <img
+                src="./img/svg/smile.svg"
+                alt="smile"
+                class="w-[18px] md:w-[20px]"
+              />
+            </h1>
+            <h2 class="text-sm font-semibold text-primary">
+              CASTUP a pour objectif de proposer de nouveaux outils, imaginés
+              par un collaborateur du groupe et destinés aux collaborateurs de
+              Kingfisher, afin de booster et optimiser différentes branches de
+              l’entreprise.
+            </h2>
+            <p class="text-sm font-light italic text-primary">
+              Pour des raisons de confidentialité, ce site est protégé par mot
+              de passe. Si vous êtes concerné, vous avez dû recevoir les
+              informations nécessaire pour y accéder
+            </p>
+          </div>
+          <!-- 2 -->
+          <div
+            class="px-[32px] py-5 md:px-[64px] md:pt-[70px] md:pb-[105px] bg-white rounded-b-[30px] md:rounded-b-3xl"
+          >
+            <div>
+              <label
+                for="passwordBienvenue"
+                class="text-sm font-semibold text-[#2D2D2D] ml-4"
+                >Mot de passe</label
+              >
+              <div
+                class="p-[2px] rounded-full [background:linear-gradient(104deg,#FFEE00,#A6FF00)] mt-[7px] mb-4"
+              >
+                <input
+                  id="passwordBienvenue"
+                  type="password"
+                  placeholder="Entrez le mot de passe :)"
+                  class="w-full px-4 py-4 text-xs italic rounded-full bg-white focus:outline-none placeholder-[#CECECE] border-[2px] border-transparent [border-image:linear-gradient(104deg,#fe0_9.08%,#a6ff00_93.2%),#fff_1]"
+                />
+              </div>
+              <button
+                class="text-center w-full gradiant-btn rounded-full py-[15px] px-[30px] cursor-pointer text-base text-[#2D2D2D] font-bold font-poppins"
+              >
+                Se connecter
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- main part -->
+    </section>
+
+    <!-- custom js -->
+    <script src="./js/index.js"></script>
+  </body>
+</html>
