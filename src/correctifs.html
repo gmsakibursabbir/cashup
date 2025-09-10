@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="./css/style.min.css" />
   </head>
 
-  <body class="min-h-screen full-bg">
+  <body class="min-h-screen full-bg overflow-x-hidden">
     <!-- header -->
     <header class="pt-[106px] md:pt-12 md:pb-[78px] relative">
       <div class="w-full md:max-w-[1152px] mx-auto px-5 md:px-0">
@@ -54,10 +54,14 @@
         </button>
       </div>
     </header>
+
     <!-- main -->
     <main>
-      <div class="w-full md:max-w-[1152px] mx-auto px-5 md:px-0 pb-[70px] md:pb-[217px]">
+      <div
+        class="w-full md:max-w-[1152px] mx-auto px-5 md:px-0 pb-[70px] md:pb-[217px]"
+      >
         <h1
+          class="text-[30px] md:text-[44px] font-bold md:font-black degrade-gradiant text-center py-5 md:py-0"
           class="text-[30px] md:text-[44px] font-bold md:font-black degrade-gradiant text-center py-5 md:py-0"
         >
           Correctifs
@@ -65,6 +69,7 @@
 
         <div
           class="grid grid-cols-2 md:grid-cols-4 gap-x-5 gap-y-6 md:gap-y-10 md:mt-[51px]"
+          id="card-grid"
         >
           <!-- 1 -->
           <div
@@ -1309,8 +1314,8 @@
         </div>
       </div>
     </main>
-    <footer class="h-[148px] md:h-[663px] relative">
-      <img src="./img/footers-bg.png" alt="footer" class="w-full h-full" />
+    <footer class="h-[175px] md:h-[403px] lg:h-[663px] relative">
+      <img src="./img/footers-bg.webp" alt="footer" class="w-full h-full" />
       <span
         class="absolute bottom-5 left-1/2 -translate-x-1/2 text-[22px] font-bold font-winky text-white underline"
       >
@@ -1318,7 +1323,107 @@
       </span>
     </footer>
     <!-- js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
 
+      function animateGrid() {
+        const grid = document.getElementById("card-grid");
+        if (!grid) return; // Exit if the grid doesn't exist
+
+        const cards = Array.from(grid.children);
+
+        // Get the current screen width
+        const screenWidth = window.innerWidth;
+
+        // Determine cards per row based on screen width
+        const cardsPerRow = screenWidth >= 768 ? 4 : 2;
+
+        // Check if the animations are already set up to avoid duplicate triggers
+        if (grid.dataset.animationsInitialized) {
+          return;
+        }
+        grid.dataset.animationsInitialized = true;
+
+        // Split cards into "rows" based on the detected cardsPerRow
+        const rows = [];
+        for (let i = 0; i < cards.length; i += cardsPerRow) {
+          rows.push(cards.slice(i, i + cardsPerRow));
+        }
+
+        // Animate each row
+        rows.forEach((rowCards, rowIndex) => {
+          // Define the base animation direction for the whole row (desktop logic)
+          const baseDirection = rowIndex % 2 === 0 ? -100 : 100;
+
+          // Iterate through each card in the row
+          rowCards.forEach((card, cardIndex) => {
+            let direction = baseDirection;
+
+            // Apply specific mobile logic if the screen is small
+            if (screenWidth < 768) {
+              // If the card is in the left column (even index, starting from 0)
+              if (cardIndex % 2 === 0) {
+                direction = -100; // Slide from left
+              } else {
+                // If the card is in the right column (odd index)
+                direction = 100; // Slide from right
+              }
+            }
+
+            gsap.from(card, {
+              x: direction,
+              opacity: 0,
+              duration: 1.2,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: card, // Each card has its own trigger
+                start: "top 85%",
+                end: "bottom 50%",
+                toggleActions: "play none none reverse",
+              },
+            });
+          });
+        });
+      }
+
+      // A helper function to kill all tweens and re-initialize
+      function refreshAnimations() {
+        gsap.killTweensOf("*");
+        const grid = document.getElementById("card-grid");
+        if (grid) {
+          delete grid.dataset.animationsInitialized;
+        }
+        animateGrid();
+      }
+
+      // Initial animation on page load
+      refreshAnimations();
+
+      // Recalculate on resize
+      let resizeTimeout;
+      window.addEventListener("resize", () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(refreshAnimations, 250);
+      });
+    </script>
+    <!-- footer animation -->
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.from("footer", {
+        y: 100, // start 100px below
+        autoAlpha: 0, // invisible at first
+        duration: 1, // animation duration
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: "footer", // start animation when footer enters viewport
+          start: "top 90%", // when top of footer is 90% from top of viewport
+          toggleActions: "play none none none", // play only once
+        },
+      });
+    </script>
     <script>
       /* ===== Card Tilt Effect ===== */
       document.querySelectorAll(".card").forEach((card) => {

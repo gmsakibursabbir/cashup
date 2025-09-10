@@ -266,12 +266,18 @@ body {
   box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1), 0 10px 15px 0 rgba(0, 0, 0, 0.1);
 }
 .stripe-green {
-border: 0 solid #E5E7EB;
-background: linear-gradient(90deg, #7ED321 0%, #22C55E 100%);
-box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.10), 0 10px 15px 0 rgba(0, 0, 0, 0.10);
+  border: 0 solid #e5e7eb;
+  background: linear-gradient(90deg, #7ed321 0%, #22c55e 100%);
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1), 0 10px 15px 0 rgba(0, 0, 0, 0.1);
 }
 .stripe-blue {
-border: 0 solid #E5E7EB;
-background: linear-gradient(90deg, #4FC3F7 0%, #2563EB 100%);
-box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.10), 0 10px 15px 0 rgba(0, 0, 0, 0.10);
+  border: 0 solid #e5e7eb;
+  background: linear-gradient(90deg, #4fc3f7 0%, #2563eb 100%);
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1), 0 10px 15px 0 rgba(0, 0, 0, 0.1);
+}
+.shadowyellow {
+  box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.1) inset, 15px 15px 70px 0 #fbdb6a;
+}
+.preloader-bg {
+  background: linear-gradient(180deg, #ccf2fc 0%, #dbf8fc 100%);
 }

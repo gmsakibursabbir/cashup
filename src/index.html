@@ -14,14 +14,47 @@
       href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
+    <!-- Splide CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css"
+    />
     <!-- custom css -->
     <link rel="stylesheet" href="./css/style.min.css" />
   </head>
 
   <body class="full-bg">
+    <!-- preloader -->
+    <div
+      class="fixed inset-0 w-full h-screen preloader-bg z-50 flex items-center justify-center"
+      id="preloader"
+    >
+      <!-- preloader logo -->
+      <img
+        src="./img/logo-gray.svg"
+        alt="logo"
+        id="preloader-logo"
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-5 md:px-0 md:top-20 md:translate-y-0 z-40 w-full max-w-[599px]"
+      />
+
+      <!-- grass -->
+      <img
+        id="grass-left"
+        src="./img/home/grass-left.svg"
+        alt="grass"
+        class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full z-50"
+      />
+      <img
+        id="grass-right"
+        src="./img/home/grass-right.svg"
+        alt="grass"
+        class="absolute -bottom-10 right-0 w-[72%] z-40"
+      />
+    </div>
+
     <!-- header -->
     <header>
-      <div class="w-full md:max-w-[1158px] mx-auto px-5 md:px-0 pt-10">
+      <div class="w-full md:max-w-[1158px] mx-auto px-5 pt-10">
         <nav
           class="flex flex-row items-center justify-center md:justify-start w-full"
         >
@@ -29,6 +62,7 @@
             <img
               src="./img/cash-logo-white.svg"
               alt="logo"
+              id="logo"
               class="w-[160px] md:w-[163px]"
             />
           </a>
@@ -38,12 +72,13 @@
     <!-- main -->
     <main>
       <!-- hero -->
-      <section class="pt-[66px] md:pt-[193px] pb-4">
+      <section class="pt-[66px] md:pt-[193px] pb-4 overflow-hidden">
         <div
-          class="w-full md:max-w-[1158px] mx-auto px-5 flex flex-col md:flex-row items-center justify-center"
+          class="w-full md:max-w-[1158px] mx-auto px-5 flex flex-col lg:flex-row items-center justify-center"
         >
           <div
-            class="w-full md:w-1/2 flex flex-col items-center md:items-start justify-start text-center md:text-start gap-4 md:gap-6"
+            id="hero-text"
+            class="w-full md:w-1/2 flex flex-col items-center lg:items-start justify-start text-center lg:text-start gap-4 md:gap-6"
           >
             <h1
               class="text-[34px] md:text-4xl font-black text-[#FBFBFB] max-w-[475px]"
@@ -51,7 +86,7 @@
               Toutes les cartes sont entre vos mains
             </h1>
             <p
-              class="text-[#FBFBFB] font-medium text-lg md:text-2xl max-w-[506px]"
+              class="text-[#FBFBFB] font-medium text-lg md:text-2xl xl:max-w-[506px]"
             >
               Optimisez vos processus d'entreprise avec nos solutions
               innovantes. Réduisez les coûts, augmentez la productivité et
@@ -61,10 +96,11 @@
           </div>
 
           <div
-            class="w-full md:w-1/2 flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-8 items-center justify-center"
+            id="hero-cards"
+            class="w-full md:w-1/2 flex flex-row space-y-8 md:space-y-0 md:space-x-8 items-center justify-center mt-10 lg:mt-0"
           >
             <div
-              class="w-full relative transform rotate-[-5deg] min-w-[430px] -right-28"
+              class="w-full relative transform rotate-[-7deg] max-w-[300px] md:min-w-[320px] lg:min-w-[356px] -right-10 lg:-right-26 transition-all ease-linear duration-300 delay-150 hover:scale-110 hover:rotate-[0deg] hover:-right-8 hover:shadow-[0_0_50px_0_#FEDD6C,inset_0_0_20px_#FEDD6C] rounded-4xl"
             >
               <img
                 src="./img/home/card-yellow.png"
@@ -78,11 +114,13 @@
                   class="max-w-[274px] mx-auto space-y-[15px] md:space-y-[25px]"
                 >
                   <h3
-                    class="text-xl md:text-[30px] font-semibold md:font-black text-[#645114]"
+                    class="text-xl lg:text-[30px] font-semibold md:font-black text-[#645114]"
                   >
                     Fonctionnalités
                   </h3>
-                  <p class="text-[#4D411C] text-xs md:text-lg font-semibold">
+                  <p
+                    class="text-[#4D411C] text-xs md:text-lg font-semibold w-[130px] md:w-full"
+                  >
                     Explorez nos outils avancés pour optimiser vos performances
                     et automatiser vos processus métier.
                   </p>
@@ -91,7 +129,7 @@
             </div>
 
             <div
-              class="w-full relative transform rotate-[5deg] min-w-[430px] -top-10 right-20"
+              class="w-full relative transform rotate-[7deg] max-w-[300px] md:min-w-[320px] lg:min-w-[356px] top-0 right-10 lg:right-0 transition-all ease-linear duration-300 delay-150 hover:scale-110 hover:rotate-[0deg] hover:right-8 hover:shadow-[0_0_50px_0_#83EFF8,inset_0_0_20px_#83EFF8] rounded-4xl"
             >
               <img
                 src="./img/home/card-blue.png"
@@ -105,11 +143,13 @@
                   class="max-w-[274px] mx-auto space-y-[15px] md:space-y-[25px]"
                 >
                   <h3
-                    class="text-xl md:text-[30px] font-semibold md:font-black text-[#1C424D]"
+                    class="text-xl lg:text-[30px] font-semibold md:font-black text-[#1C424D]"
                   >
                     Correctifs
                   </h3>
-                  <p class="text-[#1C424D] text-xs md:text-lg font-semibold">
+                  <p
+                    class="text-[#1C424D] text-xs md:text-lg font-semibold w-[130px] md:w-full"
+                  >
                     Identifiez et résolvez rapidement les problèmes pour
                     maintenir une efficacité optimale.
                   </p>
@@ -119,7 +159,8 @@
           </div>
         </div>
         <div
-          class="w-full md:max-w-[1158px] mx-auto px-5 md:px-0 pt-[64px] md:pt-[112px] flex justify-center items-center"
+          class="w-full md:max-w-[1158px] mx-auto px-5 md:px-0 pt-[64px] lg:pt-[112px] flex justify-center items-center"
+          id="see-more"
         >
           <button
             class="px-[38px] py-[16px] md:px-[70px] md:py-[22px] flex flex-row items-center rounded-full gradiant-btn text-[#312C00] text-xs lg:text-lg font-semibold font-poppins shadow-md gap-[5px] lg:gap-4 cursor-pointer"
@@ -144,14 +185,15 @@
         </div>
       </section>
       <!-- video -->
-      <section class="py-[82px] relative overflow-hidden">
-        <div
-          class="w-full md:max-w-[1008px] mx-auto px-5 relative z-50"
-        >
+      <section
+        class="py-[44px] md:py-[82px] relative overflow-hidden"
+        id="video"
+      >
+        <div class="w-full md:max-w-[1008px] mx-auto px-[34px] relative z-30">
           <!-- video container -->
           <div
             id="video-container"
-            class="relative w-full bg-black rounded-[30px] overflow-hidden shadow-2xl cursor-pointer aspect-video"
+            class="relative w-full bg-black rounded-[9px] md:rounded-[30px] overflow-hidden shadow-2xl cursor-pointer aspect-3/2 md:aspect-video"
             data-video-id="VIDEO_ID_HERE"
           >
             <img
@@ -170,192 +212,662 @@
           <img
             src="./img/home/top-left.png"
             alt="corner"
-            class="absolute -top-10 -right-10 z-30"
+            id="corderRight"
+            class="absolute -top-5 right-3 lg:-top-15 lg:-right-5 z-10 w-[115px] md:w-[376px]"
           />
           <img
             src="./img/home/bottom-left.png"
             alt="corner"
-            class="absolute -bottom-10 -left-10 z-30"
+            id="corderLeft"
+            class="absolute -bottom-5 left-3 lg:-bottom-15 lg:-left-5 z-10 w-[115px] md:w-[376px]"
           />
         </div>
         <!-- stripe -->
         <div
-          class="absolute inset-0 top-0 left-0 translate-y-30 flex flex-col items-center gap-[50px]"
+          class="absolute inset-0 top-0 left-0 translate-y-30 flex flex-col items-center gap-3 lg:gap-[50px]"
+          id="stripe"
         >
-          <div class="h-[117px] w-full stripe-yellow rotate-[-1.003deg]"></div>
-          <div class="h-[117px] w-full stripe-green rotate-[-1.003deg]"></div>
-          <div class="h-[117px] w-full stripe-blue rotate-[-1.003deg]"></div>
+          <div
+            class="h-[36px] lg:h-[117px] w-full stripe-yellow rotate-[-1.003deg]"
+            id="stripeOne"
+          ></div>
+          <div
+            class="h-[36px] lg:h-[117px] w-full stripe-green rotate-[-1.003deg]"
+            id="stripeTwo"
+          ></div>
+          <div
+            class="h-[36px] lg:h-[117px] w-full stripe-blue rotate-[-1.003deg]"
+            id="stripeThree"
+          ></div>
         </div>
       </section>
       <!-- chats -->
-      <section class="pt-[82px]">
-        <div
-          class="w-full md:max-w-[1158px] mx-auto px-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+      <section class="pt-10 lg:pt-[82px] mb-[92px] lg:mb-0" id="chats">
+        <h2
+          class="text-center text-[#4A7995] font-bold lg:font-black text-[30px] lg:text-[44px]"
         >
-          <!-- 1 -->
-          <div class="relative max-w-[293px]">
-            <!-- Image -->
-            <img src="./img/home/yellow-card.png" alt="yellow" />
-
-            <!-- Text on top (centered) -->
+          Avis collaborateurs
+        </h2>
+        <div class="hidden lg:block" id="chats-container">
+          <div
+            class="w-full md:max-w-[1158px] mx-auto px-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-10 md:pt-2"
+          >
+            <!-- 1 -->
             <div
-              class="absolute inset-0 top-7 flex flex-col items-center justify-center text-center px-[30px] gap-5"
+              class="relative max-w-[293px] transition-all ease-linear duration-300 delay-150 hover:rotate-[-6deg] rounded-4xl hover:shadow-[0_0_50px_0_#83EFF8,inset_0_0_20px_#83EFF8]"
             >
-              <p
-                class="text-[#2D2D2D] font-montserrat font-normal text-start text-lg italic"
+              <!-- Image -->
+              <img src="./img/home/yellow-card.png" alt="yellow" />
+
+              <!-- Text on top (centered) -->
+              <div
+                class="absolute inset-0 top-7 flex flex-col items-center justify-center text-center px-[30px] gap-5"
               >
-                "CastUp a révolutionné notre approche des processus. Nos
-                performances ont augmenté de 40%"
-              </p>
-              <span
-                class="text-[#2D2D2D] font-winky text-sm font-semibold self-end"
+                <p
+                  class="text-[#2D2D2D] font-montserrat font-normal text-start text-lg italic"
+                >
+                  "CastUp a révolutionné notre approche des processus. Nos
+                  performances ont augmenté de 40%"
+                </p>
+                <span
+                  class="text-[#2D2D2D] font-winky text-sm font-semibold self-end"
+                >
+                  Pierre Dubois - PDG
+                </span>
+              </div>
+            </div>
+            <!-- 2 -->
+            <div
+              class="relative max-w-[350px] transition-all ease-linear duration-300 delay-150 hover:-mt-5 hover:rotate-[0deg] rounded-4xl"
+            >
+              <!-- Image -->
+              <img
+                src="./img/home/blue-card.png"
+                alt="yellow"
+                class="absolute top-14 -left-13"
+              />
+
+              <!-- Text on top (centered) -->
+              <div
+                class="absolute inset-0 top-7 flex flex-col items-center justify-center text-center px-[30px] gap-5 max-w-[300px]"
               >
-                Pierre Dubois - PDG
-              </span>
+                <p
+                  class="text-[#2D2D2D] font-montserrat font-normal text-start text-lg italic"
+                >
+                  "Des solutions concrètes et efficaces. Je recommande CastUp à
+                  toutes les entreprises qui veulent progresser."
+                </p>
+                <span
+                  class="text-[#2D2D2D] font-winky text-sm font-semibold self-end"
+                >
+                  Jean Martin - Chef de Projet
+                </span>
+              </div>
+            </div>
+            <!-- 3 -->
+            <div
+              class="relative max-w-[350px] transition-all ease-linear duration-300 delay-150 hover:rotate-[6deg] rounded-4xl"
+            >
+              <!-- Image -->
+              <img
+                src="./img/home/green-card.png"
+                alt="yellow"
+                class="absolute -top-10 -left-12"
+              />
+
+              <!-- Text on top (centered) -->
+              <div
+                class="absolute inset-0 top-7 flex flex-col items-center justify-center text-center px-[30px] gap-5 max-w-[300px]"
+              >
+                <p
+                  class="text-[#2D2D2D] font-montserrat font-normal text-start text-lg italic"
+                >
+                  "L'équipe CastUp comprend vraiment nos enjeux. Leur expertise
+                  nous a permis d'économiser des milliers d'euros."
+                </p>
+                <span
+                  class="text-[#2D2D2D] font-winky text-sm font-semibold self-end"
+                >
+                  Marie Lambert - Responsable Qualité
+                </span>
+              </div>
+            </div>
+            <!-- 4 -->
+            <div
+              class="relative max-w-[305px] transition-all ease-linear duration-300 delay-150 hover:rotate-[-6deg] rounded-4xl"
+            >
+              <!-- Image -->
+              <img
+                src="./img/home/green-card-2.png"
+                alt="yellow"
+                class="absolute -top-0 -left-0"
+              />
+
+              <!-- Text on top (centered) -->
+              <div
+                class="absolute inset-0 top-30 flex flex-col items-center justify-center text-center px-[30px] gap-5 max-w-[300px]"
+              >
+                <p
+                  class="text-[#2D2D2D] font-montserrat font-normal text-start text-lg italic"
+                >
+                  "Grâce à CastUp, nous avons réduit nos pertes de 60% et
+                  amélioré significativement notre rentabilité."
+                </p>
+                <span
+                  class="text-[#2D2D2D] font-winky text-sm font-semibold self-end"
+                >
+                  Sophie Chen - Analyste Financière
+                </span>
+              </div>
+            </div>
+            <!-- 5 -->
+            <div
+              class="relative max-w-[320px] transition-all ease-linear duration-300 delay-150 hover:mt-5 hover:rotate-[0deg] rounded-4xl"
+            >
+              <!-- Image -->
+              <img
+                src="./img/home/blue-card-2.png"
+                alt="yellow"
+                class="absolute -top-10 left-1"
+              />
+
+              <!-- Text on top (centered) -->
+              <div
+                class="absolute inset-0 top-30 flex flex-col items-center justify-center text-center px-[30px] gap-5 max-w-[300px]"
+              >
+                <p
+                  class="text-[#2D2D2D] font-montserrat font-normal text-start text-lg italic"
+                >
+                  "Un accompagnement personnalisé et des résultats mesurables.
+                  CastUp dépasse nos attentes."
+                </p>
+                <span
+                  class="text-[#2D2D2D] font-winky text-sm font-semibold self-end"
+                >
+                  Thomas Leroy - PDG
+                </span>
+              </div>
+            </div>
+            <!-- 6 -->
+            <div
+              class="relative max-w-[320px] transition-all ease-linear duration-300 delay-150 hover:rotate-[6deg] rounded-4xl"
+            >
+              <!-- Image -->
+              <img
+                src="./img/home/yellow-card-2.png"
+                alt="yellow"
+                class="absolute -top-0 left-0"
+              />
+
+              <!-- Text on top (centered) -->
+              <div
+                class="absolute inset-0 top-30 flex flex-col items-center justify-center text-center px-[30px] gap-5 max-w-[300px]"
+              >
+                <p
+                  class="text-[#2D2D2D] font-montserrat font-normal text-start text-lg italic"
+                >
+                  "L'approche ESG de CastUp nous aide à atteindre nos objectifs
+                  de développement durable."
+                </p>
+                <span
+                  class="text-[#2D2D2D] font-winky text-sm font-semibold self-end"
+                >
+                  Clara Rousseau - Responsable RSE
+                </span>
+              </div>
             </div>
           </div>
-          <!-- 2 -->
-          <div class="relative max-w-[350px]">
-            <!-- Image -->
-            <img
-              src="./img/home/blue-card.png"
-              alt="yellow"
-              class="absolute top-14 -left-13"
-            />
+        </div>
 
-            <!-- Text on top (centered) -->
-            <div
-              class="absolute inset-0 top-7 flex flex-col items-center justify-center text-center px-[30px] gap-5 max-w-[300px]"
-            >
-              <p
-                class="text-[#2D2D2D] font-montserrat font-normal text-start text-lg italic"
-              >
-                "CastUp a révolutionné notre approche des processus. Nos
-                performances ont augmenté de 40%"
-              </p>
-              <span
-                class="text-[#2D2D2D] font-winky text-sm font-semibold self-end"
-              >
-                Pierre Dubois - PDG
-              </span>
-            </div>
-          </div>
-          <!-- 3 -->
-          <div class="relative max-w-[350px]">
-            <!-- Image -->
-            <img
-              src="./img/home/green-card.png"
-              alt="yellow"
-              class="absolute -top-10 -left-12"
-            />
+        <div class="lg:hidden">
+          <div id="testimonials-splide" class="splide relative">
+            <div class="splide__track">
+              <ul class="splide__list">
+                <li class="splide__slide">
+                  <!-- 1 -->
+                  <div class="relative max-w-[293px] mx-auto">
+                    <img src="./img/home/yellow-card.png" alt="yellow" />
+                    <div
+                      class="absolute inset-0 top-0 flex flex-col items-center justify-center text-center px-[30px] gap-5"
+                    >
+                      <p
+                        class="text-[#2D2D2D] font-montserrat font-normal text-start text-lg italic"
+                      >
+                        "CastUp a révolutionné notre approche des processus. Nos
+                        performances ont augmenté de 40%"
+                      </p>
+                      <span
+                        class="text-[#2D2D2D] font-winky text-sm font-semibold self-end"
+                      >
+                        Pierre Dubois - PDG
+                      </span>
+                    </div>
+                  </div>
+                </li>
 
-            <!-- Text on top (centered) -->
-            <div
-              class="absolute inset-0 top-7 flex flex-col items-center justify-center text-center px-[30px] gap-5 max-w-[300px]"
-            >
-              <p
-                class="text-[#2D2D2D] font-montserrat font-normal text-start text-lg italic"
-              >
-                "CastUp a révolutionné notre approche des processus. Nos
-                performances ont augmenté de 40%"
-              </p>
-              <span
-                class="text-[#2D2D2D] font-winky text-sm font-semibold self-end"
-              >
-                Pierre Dubois - PDG
-              </span>
-            </div>
-          </div>
-          <!-- 4 -->
-          <div class="relative max-w-[305px]">
-            <!-- Image -->
-            <img
-              src="./img/home/green-card-2.png"
-              alt="yellow"
-              class="absolute -top-0 -left-0"
-            />
+                <li class="splide__slide">
+                  <!-- 2 -->
+                  <div class="relative max-w-[350px] mx-auto">
+                    <img
+                      src="./img/home/blue-card.png"
+                      alt="yellow"
+                      class="absolute top-15 -left-6"
+                    />
+                    <div
+                      class="absolute inset-0 top-40 left-6 flex flex-col items-center justify-center text-center px-[30px] gap-5 max-w-[300px]"
+                    >
+                      <p
+                        class="text-[#2D2D2D] font-montserrat font-normal text-start text-lg italic"
+                      >
+                        "Des solutions concrètes et efficaces. Je recommande
+                        CastUp à toutes les entreprises qui veulent progresser."
+                      </p>
+                      <span
+                        class="text-[#2D2D2D] font-winky text-sm font-semibold self-end"
+                      >
+                        Jean Martin - Chef de Projet
+                      </span>
+                    </div>
+                  </div>
+                </li>
 
-            <!-- Text on top (centered) -->
-            <div
-              class="absolute inset-0 top-30 flex flex-col items-center justify-center text-center px-[30px] gap-5 max-w-[300px]"
-            >
-              <p
-                class="text-[#2D2D2D] font-montserrat font-normal text-start text-lg italic"
-              >
-                "CastUp a révolutionné notre approche des processus. Nos
-                performances ont augmenté de 40%"
-              </p>
-              <span
-                class="text-[#2D2D2D] font-winky text-sm font-semibold self-end"
-              >
-                Pierre Dubois - PDG
-              </span>
-            </div>
-          </div>
-          <!-- 5 -->
-          <div class="relative max-w-[320px]">
-            <!-- Image -->
-            <img
-              src="./img/home/blue-card-2.png"
-              alt="yellow"
-              class="absolute -top-10 left-1"
-            />
+                <li class="splide__slide">
+                  <!-- 3 -->
+                  <div class="relative max-w-[350px] mx-auto">
+                    <img
+                      src="./img/home/green-card.png"
+                      alt="yellow"
+                      class="absolute -top-5 -left-5"
+                    />
+                    <div
+                      class="absolute inset-0 top-40 left-5 flex flex-col items-center justify-center text-center px-[30px] gap-5 max-w-[300px]"
+                    >
+                      <p
+                        class="text-[#2D2D2D] font-montserrat font-normal text-start text-lg italic"
+                      >
+                        "L'équipe CastUp comprend vraiment nos enjeux. Leur
+                        expertise nous a permis d'économiser des milliers
+                        d'euros."
+                      </p>
+                      <span
+                        class="text-[#2D2D2D] font-winky text-sm font-semibold self-end"
+                      >
+                        Marie Lambert - Responsable Qualité
+                      </span>
+                    </div>
+                  </div>
+                </li>
 
-            <!-- Text on top (centered) -->
-            <div
-              class="absolute inset-0 top-30 flex flex-col items-center justify-center text-center px-[30px] gap-5 max-w-[300px]"
-            >
-              <p
-                class="text-[#2D2D2D] font-montserrat font-normal text-start text-lg italic"
-              >
-                "CastUp a révolutionné notre approche des processus. Nos
-                performances ont augmenté de 40%"
-              </p>
-              <span
-                class="text-[#2D2D2D] font-winky text-sm font-semibold self-end"
-              >
-                Pierre Dubois - PDG
-              </span>
-            </div>
-          </div>
-          <!-- 6 -->
-          <div class="relative max-w-[320px]">
-            <!-- Image -->
-            <img
-              src="./img/home/yellow-card-2.png"
-              alt="yellow"
-              class="absolute -top-0 left-0"
-            />
+                <li class="splide__slide">
+                  <!-- 4 -->
+                  <div class="relative max-w-[290px] mx-auto">
+                    <img
+                      src="./img/home/green-card-2.png"
+                      alt="yellow"
+                      class="absolute top-14 right-5"
+                    />
+                    <div
+                      class="absolute inset-0 top-42 right-5 flex flex-col items-center justify-center text-center px-[30px] gap-5 max-w-[300px]"
+                    >
+                      <p
+                        class="text-[#2D2D2D] font-montserrat font-normal text-start text-lg italic"
+                      >
+                        "Grâce à CastUp, nous avons réduit nos pertes de 60% et
+                        amélioré significativement notre rentabilité."
+                      </p>
+                      <span
+                        class="text-[#2D2D2D] font-winky text-sm font-semibold self-end"
+                      >
+                        Sophie Chen - Analyste Financière
+                      </span>
+                    </div>
+                  </div>
+                </li>
 
-            <!-- Text on top (centered) -->
-            <div
-              class="absolute inset-0 top-30 flex flex-col items-center justify-center text-center px-[30px] gap-5 max-w-[300px]"
-            >
-              <p
-                class="text-[#2D2D2D] font-montserrat font-normal text-start text-lg italic"
-              >
-                "CastUp a révolutionné notre approche des processus. Nos
-                performances ont augmenté de 40%"
-              </p>
-              <span
-                class="text-[#2D2D2D] font-winky text-sm font-semibold self-end"
-              >
-                Pierre Dubois - PDG
-              </span>
+                <li class="splide__slide">
+                  <!-- 5 -->
+                  <div class="relative max-w-[290px] mx-auto">
+                    <img
+                      src="./img/home/blue-card-2.png"
+                      alt="yellow"
+                      class="absolute top-0 left-5"
+                    />
+                    <div
+                      class="absolute inset-0 top-40 left-5 flex flex-col items-center justify-center text-center px-[30px] gap-5 max-w-[300px]"
+                    >
+                      <p
+                        class="text-[#2D2D2D] font-montserrat font-normal text-start text-lg italic"
+                      >
+                        "Un accompagnement personnalisé et des résultats
+                        mesurables. CastUp dépasse nos attentes."
+                      </p>
+                      <span
+                        class="text-[#2D2D2D] font-winky text-sm font-semibold self-end"
+                      >
+                        Thomas Leroy - PDG
+                      </span>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="splide__slide">
+                  <!-- 6 -->
+                  <div class="relative max-w-[305px] mx-auto">
+                    <img
+                      src="./img/home/yellow-card-2.png"
+                      alt="yellow"
+                      class="absolute top-12 left-0"
+                    />
+                    <div
+                      class="absolute inset-0 top-40 flex flex-col items-center justify-center text-center px-[30px] gap-5 max-w-[300px]"
+                    >
+                      <p
+                        class="text-[#2D2D2D] font-montserrat font-normal text-start text-lg italic"
+                      >
+                        "L'approche ESG de CastUp nous aide à atteindre nos
+                        objectifs de développement durable."
+                      </p>
+                      <span
+                        class="text-[#2D2D2D] font-winky text-sm font-semibold self-end"
+                      >
+                        Clara Rousseau - Responsable RSE
+                      </span>
+                    </div>
+                  </div>
+                </li>
+              </ul>
             </div>
+            <!-- Custom arrows -->
+            <button
+              id="custom-prev"
+              class="absolute left-3 top-1/2 -translate-y-1/2 rounded-full"
+            >
+              <!-- Example: Heroicons left arrow -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="26"
+                viewBox="0 0 16 26"
+                fill="none"
+              >
+                <path
+                  d="M14.5079 0.00362615C14.7177 0.0177838 14.9227 0.0738013 15.1112 0.168476C15.2997 0.26315 15.4679 0.394625 15.6063 0.555382C15.8848 0.879993 16.0251 1.30358 15.9963 1.73313C15.9675 2.16268 15.772 2.56307 15.4528 2.84636L4.03132 13.0058L15.4528 23.1533C15.772 23.4366 15.9675 23.837 15.9963 24.2665C16.0251 24.6961 15.8848 25.1197 15.6063 25.4443C15.3274 25.7685 14.9331 25.967 14.5101 25.9962C14.0871 26.0255 13.67 25.883 13.3504 25.6002L0.547008 14.2293C0.375198 14.0768 0.237501 13.8887 0.143156 13.6777C0.048811 13.4666 0 13.2376 0 13.0058C0 12.7741 0.048811 12.545 0.143156 12.334C0.237501 12.123 0.375198 11.9349 0.547008 11.7824L13.3504 0.39945C13.6695 0.117268 14.0857 -0.0250537 14.5079 0.00362615Z"
+                  fill="#4A7995"
+                />
+              </svg>
+            </button>
+
+            <button
+              id="custom-next"
+              class="absolute right-3 top-1/2 -translate-y-1/2 rounded-full"
+            >
+              <!-- Example: Heroicons right arrow -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="26"
+                viewBox="0 0 16 26"
+                fill="none"
+              >
+                <path
+                  d="M1.49212 0.00362615C1.28231 0.0177838 1.0773 0.0738013 0.888819 0.168476C0.700339 0.26315 0.532084 0.394625 0.393674 0.555382C0.115168 0.879993 -0.025091 1.30358 0.00369863 1.73313C0.0324882 2.16268 0.227973 2.56307 0.547222 2.84636L11.9687 13.0058L0.54722 23.1533C0.227971 23.4366 0.032486 23.837 0.00369646 24.2665C-0.0250931 24.6961 0.115166 25.1197 0.393672 25.4443C0.672634 25.7685 1.0669 25.967 1.48988 25.9962C1.91285 26.0255 2.32997 25.883 2.64962 25.6002L15.453 14.2293C15.6248 14.0768 15.7625 13.8887 15.8568 13.6777C15.9512 13.4666 16 13.2376 16 13.0058C16 12.7741 15.9512 12.545 15.8568 12.334C15.7625 12.123 15.6248 11.9349 15.453 11.7824L2.64962 0.39945C2.3305 0.117268 1.91431 -0.0250537 1.49212 0.00362615Z"
+                  fill="#4A7995"
+                />
+              </svg>
+            </button>
           </div>
         </div>
       </section>
     </main>
-    <footer class="mt-[300px] h-[148px] md:h-[663px] relative">
-      <img src="./img/footers-bg.png" alt="footer" class="w-full h-full" />
+    <footer class="lg:mt-[300px] h-[175px] md:h-[403px] lg:h-[663px] relative">
+      <img
+        src="./img/footers-bg.webp"
+        alt="footer"
+        class="w-full h-full footer-bg"
+      />
       <span
-        class="absolute bottom-5 left-1/2 -translate-x-1/2 text-[22px] font-bold font-winky text-white underline"
+        class="absolute bottom-5 left-1/2 -translate-x-1/2 text-[22px] font-bold font-winky text-white underline credit-footer"
       >
         Mentions légales
       </span>
     </footer>
     <!-- js -->
+    <!-- Splide JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script>
+      window.addEventListener("load", () => {
+        const preloader = document.getElementById("preloader");
+        const preloaderLogo = document.getElementById("preloader-logo");
+        const headerLogo = document.getElementById("logo");
+
+        if (preloader && preloaderLogo && headerLogo) {
+          // Disable scroll during preloader
+          document.body.style.overflow = "hidden";
+
+          const headerRect = headerLogo.getBoundingClientRect();
+          const preRect = preloaderLogo.getBoundingClientRect();
+          const scale = Math.min(
+            headerRect.width / preRect.width,
+            headerRect.height / preRect.height
+          );
+          const x =
+            headerRect.left +
+            headerRect.width / 2 -
+            (preRect.left + preRect.width / 2);
+          const y =
+            headerRect.top +
+            headerRect.height / 2 -
+            (preRect.top + preRect.height / 2);
+
+          const windowHeight = window.innerHeight;
+
+          const tl = gsap.timeline({
+            onComplete: () => {
+              // Preloader fade
+              gsap.to(preloader, {
+                autoAlpha: 0,
+                duration: 0.5,
+                display: "none",
+              });
+              // Re-enable scroll
+              document.body.style.overflow = "";
+
+              // --- Hero animation starts here ---
+              const heroText = document.getElementById("hero-text");
+              const heroCards = document.getElementById("hero-cards");
+              const seeMoreBtn = document.getElementById("see-more");
+
+              gsap
+                .timeline()
+                .from(heroText, {
+                  x: -100,
+                  autoAlpha: 0,
+                  duration: 1,
+                  ease: "power3.out",
+                })
+                .from(
+                  heroCards,
+                  { x: 100, autoAlpha: 0, duration: 1, ease: "power3.out" },
+                  "-=0.7"
+                )
+                .from(
+                  seeMoreBtn,
+                  { y: 50, autoAlpha: 0, duration: 0.8, ease: "power3.out" },
+                  "-=0.5"
+                );
+            },
+          });
+
+          // --- Entrance animations ---
+          tl.from(preloaderLogo, {
+            y: -50,
+            autoAlpha: 0,
+            duration: 1,
+            ease: "power2.out",
+          })
+            .from(
+              "#grass-left",
+              { y: 150, autoAlpha: 0, duration: 1.2, ease: "power2.out" },
+              "-=0.8"
+            )
+            .from(
+              "#grass-right",
+              { y: 150, autoAlpha: 0, duration: 1.2, ease: "power2.out" },
+              "-=1.0"
+            )
+            .to({}, { duration: 1.5 }) // pause ~1.5s
+            // Exit animations
+            .to(
+              ["#grass-left", "#grass-right"],
+              {
+                y: windowHeight,
+                autoAlpha: 0,
+                duration: 0.6,
+                ease: "power3.in",
+              },
+              "exit"
+            )
+            .to(
+              preloaderLogo,
+              {
+                x: x,
+                y: y,
+                scale: scale,
+                autoAlpha: 0.9,
+                duration: 0.8,
+                ease: "power3.inOut",
+                onComplete: () => {
+                  preloaderLogo.style.display = "none";
+                  headerLogo.style.opacity = 1;
+                },
+              },
+              "exit+=0.2"
+            );
+        }
+      });
+    </script>
+    <!-- video -->
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Video + corner images timeline
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: "#video",
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        })
+        .from("#video-container", {
+          scale: 0.8,
+          autoAlpha: 0,
+          duration: 1,
+          ease: "power3.out",
+        })
+        .from(
+          ["#corderRight", "#corderLeft"],
+          {
+            y: 50,
+            autoAlpha: 0,
+            duration: 1,
+            ease: "power3.out",
+          },
+          "-=0.8"
+        ); // overlap with video animation
+
+      // Stripes animation timeline (staggered)
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: "#video",
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        })
+        .from("#stripeOne", {
+          x: "-100%",
+          autoAlpha: 0,
+          duration: 1,
+          ease: "power3.out",
+        })
+        .from(
+          "#stripeTwo",
+          { x: "100%", autoAlpha: 0, duration: 1, ease: "power3.out" },
+          "-=0.7"
+        )
+        .from(
+          "#stripeThree",
+          { x: "-100%", autoAlpha: 0, duration: 1, ease: "power3.out" },
+          "-=0.7"
+        );
+    </script>
+    <!-- footer animation -->
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.from("footer", {
+        y: 100, // start 100px below
+        autoAlpha: 0, // invisible at first
+        duration: 1, // animation duration
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: "footer", // start animation when footer enters viewport
+          start: "top 90%", // when top of footer is 90% from top of viewport
+          toggleActions: "play none none none", // play only once
+        },
+      });
+    </script>
+    <!-- chat slide -->
+    <script>
+      const cards = document.querySelectorAll("#chats-container .grid > div");
+
+      cards.forEach((card, index) => {
+        let animProps = { autoAlpha: 0, duration: 1, ease: "power3.out" };
+
+        if (index % 3 === 0) animProps.x = -100; // left
+        else if (index % 3 === 1) animProps.y = 50; // middle
+        else animProps.x = 100; // right
+
+        gsap.from(card, {
+          ...animProps,
+          scrollTrigger: {
+            trigger: card,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        });
+      });
+    </script>
+    <!-- testimonials -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var splide = new Splide("#testimonials-splide", {
+          type: "loop",
+          perPage: 3,
+          gap: "1rem",
+          pagination: false,
+          arrows: false, // disable default arrows
+          autoplay: false,
+          breakpoints: {
+            1280: { perPage: 3 },
+            1024: { perPage: 2 },
+            640: { perPage: 1, focus: "center" },
+          },
+        }).mount();
+
+        // Custom arrows
+        document
+          .getElementById("custom-prev")
+          .addEventListener("click", () => splide.go("<"));
+        document
+          .getElementById("custom-next")
+          .addEventListener("click", () => splide.go(">"));
+      });
+    </script>
+
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const videoContainer = document.getElementById("video-container");
