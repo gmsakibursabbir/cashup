@@ -281,3 +281,18 @@ body {
 .preloader-bg {
   background: linear-gradient(180deg, #ccf2fc 0%, #dbf8fc 100%);
 }
+
+.card-left-rotate:hover {
+  transform: rotate(-6deg) !important;
+}
+.card-right-rotate:hover {
+  transform: rotate(6deg) !important;
+}
+.card-top:hover {
+
+    transform: translateY(-20px) !important; /* pushes card up */
+}
+
+.card-bottom:hover {
+  transform: translateY(20px) !important; /* pushes card down */
+}
