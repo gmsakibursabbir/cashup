@@ -88,7 +88,12 @@ body {
     1;
 }
 .gradiant-btn {
-  background: var(--DEGRAGE-JAUNE, linear-gradient(90deg, #fc0 0%, #fe0 100%));
+  background: linear-gradient(90deg, #fc0 0%, #fe0 100%);
+  transition: all 0.3s ease-in-out;
+}
+.gradiant-btn:hover {
+  background: linear-gradient(114deg, #d4f6c4 -2.78%, #74c900 100%);
+  box-shadow: 0 0 20px rgba(131, 239, 248, 0.8);
 }
 
 /* === Desktop / md and up (default) === */
@@ -156,7 +161,7 @@ body {
 }
 
 .full-bg {
-  background: url("../img/bg-cloud.webp") no-repeat top center;
+  background: url("../img/full-bg.jpg") no-repeat top center;
   background-size: cover;
 }
 .degrade-gradiant {
@@ -289,8 +294,7 @@ body {
   transform: rotate(6deg) !important;
 }
 .card-top:hover {
-
-    transform: translateY(-20px) !important; /* pushes card up */
+  transform: translateY(-20px) !important; /* pushes card up */
 }
 
 .card-bottom:hover {

@@ -52,7 +52,7 @@
 
     <!-- header -->
     <header>
-      <div class="w-full md:max-w-[1158px] mx-auto px-5 pt-10">
+      <div class="w-full md:max-w-[1158px] mx-auto px-5 pt-10 relative z-10">
         <nav
           class="flex flex-row items-center justify-center md:justify-start w-full"
         >
@@ -70,117 +70,136 @@
     <!-- main -->
     <main>
       <!-- hero -->
-      <section class="pt-[66px] md:pt-[193px] pb-4 overflow-hidden">
-        <div
-          class="w-full md:max-w-[1158px] mx-auto px-5 flex flex-col lg:flex-row items-center justify-center"
-        >
+      <section class="overflow-hidden relative">
+        <div class="pt-[66px] md:pt-[193px] pb-4">
           <div
-            id="hero-text"
-            class="w-full md:w-1/2 flex flex-col items-center lg:items-start justify-start text-center lg:text-start gap-4 md:gap-6"
-          >
-            <h1
-              class="text-[34px] md:text-4xl font-black text-[#FBFBFB] max-w-[475px]"
-            >
-              Toutes les cartes sont entre vos mains
-            </h1>
-            <p
-              class="text-[#FBFBFB] font-medium text-lg md:text-2xl xl:max-w-[506px]"
-            >
-              Optimisez vos processus d'entreprise avec nos solutions
-              innovantes. Réduisez les coûts, augmentez la productivité et
-              améliorez la satisfaction client grâce à notre expertise en audit
-              de processus.
-            </p>
-          </div>
-
-          <div
-            id="hero-cards"
-            class="w-full md:w-1/2 flex flex-row space-y-8 md:space-y-0 md:space-x-8 items-center justify-center mt-10 lg:mt-0"
+            class="w-full md:max-w-[1158px] mx-auto px-5 flex flex-col lg:flex-row items-center justify-center relative z-40"
           >
             <div
-              class="w-full relative transform rotate-[-7deg] max-w-[300px] md:min-w-[320px] lg:min-w-[356px] -right-10 lg:-right-26 transition-all ease-linear duration-300 delay-150 hover:scale-110 hover:rotate-[0deg] hover:-right-8 hover:shadow-[0_0_50px_0_#FEDD6C,inset_0_0_20px_#FEDD6C] rounded-4xl"
+              id="hero-text"
+              class="w-full md:w-1/2 flex flex-col items-center lg:items-start justify-start text-center lg:text-start gap-4 md:gap-6"
             >
-              <img
-                src="./img/home/card-yellow.png"
-                alt="Card Background Yellow"
-                class="w-full"
-              />
-              <div
-                class="absolute inset-0 flex flex-col items-center justify-center text-center"
+              <h1
+                class="text-[34px] md:text-4xl font-black text-[#FBFBFB] max-w-[475px]"
               >
-                <div
-                  class="max-w-[274px] mx-auto space-y-[15px] md:space-y-[25px]"
-                >
-                  <h3
-                    class="text-xl lg:text-[30px] font-semibold md:font-black text-[#645114]"
-                  >
-                    Fonctionnalités
-                  </h3>
-                  <p
-                    class="text-[#4D411C] text-xs md:text-lg font-semibold w-[130px] md:w-full"
-                  >
-                    Explorez nos outils avancés pour optimiser vos performances
-                    et automatiser vos processus métier.
-                  </p>
-                </div>
-              </div>
+                Toutes les cartes sont entre vos mains
+              </h1>
+              <p
+                class="text-[#FBFBFB] font-medium text-lg md:text-2xl xl:max-w-[506px]"
+              >
+                Optimisez vos processus d'entreprise avec nos solutions
+                innovantes. Réduisez les coûts, augmentez la productivité et
+                améliorez la satisfaction client grâce à notre expertise en
+                audit de processus.
+              </p>
             </div>
 
             <div
-              class="w-full relative transform rotate-[7deg] max-w-[300px] md:min-w-[320px] lg:min-w-[356px] top-0 right-10 lg:right-0 transition-all ease-linear duration-300 delay-150 hover:scale-110 hover:rotate-[0deg] hover:right-8 hover:shadow-[0_0_50px_0_#83EFF8,inset_0_0_20px_#83EFF8] rounded-4xl"
+              id="hero-cards"
+              class="w-full md:w-1/2 flex flex-row space-y-8 md:space-y-0 md:space-x-8 items-center justify-center mt-10 lg:mt-0"
             >
-              <img
-                src="./img/home/card-blue.png"
-                alt="Card Background Blue"
-                class="w-full"
-              />
               <div
-                class="absolute inset-0 flex flex-col items-center justify-center text-center"
+                class="w-full relative transform rotate-[-7deg] max-w-[300px] md:min-w-[320px] lg:min-w-[356px] -right-10 lg:-right-26 transition-all ease-linear duration-300 delay-150 hover:scale-110 hover:rotate-[0deg] hover:-right-8 hover:shadow-[0_0_50px_0_#FEDD6C,inset_0_0_20px_#FEDD6C] rounded-4xl"
               >
+                <img
+                  src="./img/home/card-yellow.png"
+                  alt="Card Background Yellow"
+                  class="w-full"
+                />
                 <div
-                  class="max-w-[274px] mx-auto space-y-[15px] md:space-y-[25px]"
+                  class="absolute inset-0 flex flex-col items-center justify-center text-center"
                 >
-                  <h3
-                    class="text-xl lg:text-[30px] font-semibold md:font-black text-[#1C424D]"
+                  <div
+                    class="max-w-[274px] mx-auto space-y-[15px] md:space-y-[25px]"
                   >
-                    Correctifs
-                  </h3>
-                  <p
-                    class="text-[#1C424D] text-xs md:text-lg font-semibold w-[130px] md:w-full"
+                    <h3
+                      class="text-xl lg:text-[30px] font-semibold md:font-black text-[#645114]"
+                    >
+                      Fonctionnalités
+                    </h3>
+                    <p
+                      class="text-[#4D411C] text-xs md:text-lg font-semibold w-[130px] md:w-full"
+                    >
+                      Explorez nos outils avancés pour optimiser vos
+                      performances et automatiser vos processus métier.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="w-full relative transform rotate-[7deg] max-w-[300px] md:min-w-[320px] lg:min-w-[356px] top-0 right-10 lg:right-0 transition-all ease-linear duration-300 delay-150 hover:scale-110 hover:rotate-[0deg] hover:right-8 hover:shadow-[0_0_50px_0_#83EFF8,inset_0_0_20px_#83EFF8] rounded-4xl"
+              >
+                <img
+                  src="./img/home/card-blue.png"
+                  alt="Card Background Blue"
+                  class="w-full"
+                />
+                <div
+                  class="absolute inset-0 flex flex-col items-center justify-center text-center"
+                >
+                  <div
+                    class="max-w-[274px] mx-auto space-y-[15px] md:space-y-[25px]"
                   >
-                    Identifiez et résolvez rapidement les problèmes pour
-                    maintenir une efficacité optimale.
-                  </p>
+                    <h3
+                      class="text-xl lg:text-[30px] font-semibold md:font-black text-[#1C424D]"
+                    >
+                      Correctifs
+                    </h3>
+                    <p
+                      class="text-[#1C424D] text-xs md:text-lg font-semibold w-[130px] md:w-full"
+                    >
+                      Identifiez et résolvez rapidement les problèmes pour
+                      maintenir une efficacité optimale.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div
-          class="w-full md:max-w-[1158px] mx-auto px-5 md:px-0 pt-[64px] lg:pt-[112px] flex justify-center items-center"
-          id="see-more"
-        >
-          <button
-            class="px-[38px] py-[16px] md:px-[70px] md:py-[22px] flex flex-row items-center rounded-full gradiant-btn text-[#312C00] text-xs lg:text-lg font-semibold font-poppins shadow-md gap-[5px] lg:gap-4 cursor-pointer"
+          <div
+            class="w-full md:max-w-[1158px] mx-auto px-5 md:px-0 pt-[64px] lg:pt-[112px] flex justify-center items-center relative z-40"
+            id="see-more"
           >
-            Voir plus
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="10"
-              height="16"
-              viewBox="0 0 10 16"
-              fill="none"
+            <a
+              href="#video"
+              class="px-[38px] py-[16px] md:px-[70px] md:py-[22px] flex flex-row items-center rounded-full gradiant-btn text-[#312C00] text-xs lg:text-lg font-semibold font-poppins shadow-md gap-[5px] lg:gap-4 cursor-pointer"
             >
-              <path
-                d="M1.875 14.25L8.125 8L1.875 1.75"
-                stroke="#1E1E1E"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </button>
+              Voir plus
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="10"
+                height="16"
+                viewBox="0 0 10 16"
+                fill="none"
+              >
+                <path
+                  d="M1.875 14.25L8.125 8L1.875 1.75"
+                  stroke="#1E1E1E"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+          </div>
         </div>
+        <!-- cloud -->
+        <img
+          src="./img/connexion/cloud-04.png"
+          alt="cloud"
+          class="absolute top-0 -right-10 md:-top-10 md:right-60 z-20 max-w-[189px] md:min-w-[600px] cloud-right"
+        />
+        <img
+          src="./img/connexion/cloud-01.png"
+          alt="cloud"
+          class="absolute bottom-5 right-10 md:-bottom-30 md:right-20 z-50 md:z-20 max-w-[250px] md:min-w-[700px] cloud-right"
+        />
+        <img
+          src="./img/connexion/nuit-0.png"
+          alt="cloud"
+          class="absolute bottom-[40%] -left-15 md:-bottom-30 md:-left-60 z-20 max-w-[250px] md:min-w-[700px] cloud-left"
+        />
       </section>
       <!-- video -->
       <section
@@ -240,13 +259,16 @@
         </div>
       </section>
       <!-- chats -->
-      <section class="pt-10 lg:pt-[82px] mb-[92px] lg:mb-0" id="chats">
+      <section
+        class="pt-10 lg:pt-[82px] mb-[92px] lg:mb-0 overflow-hidden relative"
+        id="chats"
+      >
         <h2
-          class="text-center text-[#4A7995] font-bold lg:font-black text-[30px] lg:text-[44px]"
+          class="text-center text-[#4A7995] font-bold lg:font-black text-[30px] lg:text-[44px] relative z-40"
         >
           Avis collaborateurs
         </h2>
-        <div class="hidden lg:block" id="chats-container">
+        <div class="hidden lg:block relative z-40" id="chats-container">
           <div
             class="w-full md:max-w-[1158px] mx-auto px-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-10 md:pt-2"
           >
@@ -445,7 +467,7 @@
           </div>
         </div>
 
-        <div class="lg:hidden">
+        <div class="lg:hidden relative z-40">
           <div id="testimonials-splide" class="splide relative">
             <div class="splide__track">
               <ul class="splide__list">
@@ -671,19 +693,47 @@
             </button>
           </div>
         </div>
+
+        <!-- cloud -->
+        <img
+          src="./img/connexion/nuit-0.png"
+          alt="cloud"
+          class="absolute top-10 -right-20 md:-top-10 md:-right-60 z-20 max-w-[250px] md:min-w-[700px] reveal-right"
+        />
+        <img
+          src="./img/connexion/cloud-04.png"
+          alt="cloud"
+          class="absolute top-30 -left-10 md:top-10 md:left-50 z-20 max-w-[189px] md:min-w-[500px] reveal-left"
+        />
+        <img
+          src="./img/connexion/cloud-04.png"
+          alt="cloud"
+          class="absolute bottom-0 right-10 md:bottom-10 md:right-20 z-20 max-w-[189px] md:min-w-[700px] reveal-right"
+        />
+        <img
+          src="./img/connexion/nuit-0.png"
+          alt="cloud"
+          class="absolute bottom-0 -left-10 md:bottom-30 md:left-[30%] z-20 max-w-[189px] md:min-w-[500px] reveal-left"
+        />
+        <img
+          src="./img/connexion/cloud-04.png"
+          alt="cloud"
+          class="absolute -bottom-30 right-10 md:-bottom-10 md:left-[32%] z-50 max-w-[189px] md:min-w-[400px] reveal-right"
+        />
       </section>
     </main>
-    <footer class="lg:mt-[300px] h-[175px] md:h-[403px] lg:h-[663px] relative">
+    <footer class="lg:mt-[100px] h-[175px] md:h-[403px] lg:h-[663px] relative">
       <img
         src="./img/footers-bg.webp"
         alt="footer"
         class="w-full h-full footer-bg"
       />
-      <span
+      <a
+        href="#"
         class="absolute bottom-5 left-1/2 -translate-x-1/2 text-[22px] font-bold font-winky text-white underline credit-footer"
       >
         Mentions légales
-      </span>
+      </a>
     </footer>
     <!-- js -->
     <!-- Splide JS -->
@@ -692,6 +742,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script>
       window.addEventListener("load", () => {
+        gsap.registerPlugin(ScrollTrigger);
+
         const preloader = document.getElementById("preloader");
         const preloaderLogo = document.getElementById("preloader-logo");
         const headerLogo = document.getElementById("logo");
@@ -719,42 +771,67 @@
 
           const tl = gsap.timeline({
             onComplete: () => {
-              // Preloader fade
+              // Fade out preloader
               gsap.to(preloader, {
                 autoAlpha: 0,
                 duration: 0.5,
                 display: "none",
               });
+
               // Re-enable scroll
               document.body.style.overflow = "";
 
-              // --- Hero animation starts here ---
+              // ✅ Refresh ScrollTrigger just in case
+              ScrollTrigger.refresh();
+
+              // --- Hero + Clouds animation ---
               const heroText = document.getElementById("hero-text");
               const heroCards = document.getElementById("hero-cards");
               const seeMoreBtn = document.getElementById("see-more");
 
-              gsap
-                .timeline()
-                .from(heroText, {
-                  x: -100,
+              const heroTl = gsap.timeline();
+
+              // Clouds
+              heroTl
+                .from(".cloud-left", {
+                  x: -120,
                   autoAlpha: 0,
-                  duration: 1,
+                  duration: 0.6, // ⏩ faster
+                  ease: "power3.out",
+                })
+                .from(
+                  ".cloud-right",
+                  {
+                    x: 120,
+                    autoAlpha: 0,
+                    duration: 0.6, // ⏩ faster
+                    ease: "power3.out",
+                    stagger: 0.15, // ⏩ quicker stagger
+                  },
+                  "-=0.4" // overlap with left cloud
+                )
+
+                // Hero content
+                .from(heroText, {
+                  x: -80,
+                  autoAlpha: 0,
+                  duration: 0.6, // ⏩ faster
                   ease: "power3.out",
                 })
                 .from(
                   heroCards,
-                  { x: 100, autoAlpha: 0, duration: 1, ease: "power3.out" },
-                  "-=0.7"
+                  { x: 80, autoAlpha: 0, duration: 0.6, ease: "power3.out" },
+                  "-=0.4" // overlap
                 )
                 .from(
                   seeMoreBtn,
-                  { y: 50, autoAlpha: 0, duration: 0.8, ease: "power3.out" },
-                  "-=0.5"
+                  { y: 30, autoAlpha: 0, duration: 0.5, ease: "power3.out" },
+                  "-=0.3"
                 );
             },
           });
 
-          // --- Entrance animations ---
+          // --- Preloader entrance animations ---
           tl.from(preloaderLogo, {
             y: -50,
             autoAlpha: 0,

@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="./css/style.min.css" />
   </head>
 
-  <body class="overflow-x-hidden">
+  <body class="overflow-x-hidden page-transition">
     <!-- preloader -->
     <div
       class="fixed inset-0 w-full h-full z-[9999999] bg-white flex items-center justify-center"
@@ -142,7 +142,7 @@
                 >Mot de passe</label
               >
               <div
-                class="p-[2px] rounded-full [background:linear-gradient(104deg,#FFEE00,#A6FF00)] mt-[7px] mb-4"
+                class="p-[2px] rounded-full [background:linear-gradient(104deg,#FFEE00,#A6FF00)] mt-[7px] mb-1"
               >
                 <input
                   id="passwordBienvenue"
@@ -151,8 +151,15 @@
                   class="w-full px-4 py-4 text-xs italic rounded-full bg-white focus:outline-none placeholder-[#CECECE] border-[2px] border-transparent [border-image:linear-gradient(104deg,#fe0_9.08%,#a6ff00_93.2%),#fff_1]"
                 />
               </div>
+
+              <!-- Error message placeholder -->
+              <p id="passwordError" class="text-red-500 text-xs ml-4 hidden">
+                Erreur
+              </p>
+
               <button
-                class="text-center w-full gradiant-btn rounded-full py-[15px] px-[30px] cursor-pointer text-base text-[#2D2D2D] font-bold font-poppins"
+                id="loginBtn"
+                class="text-center w-full gradiant-btn rounded-full py-[15px] px-[30px] cursor-pointer text-base text-[#2D2D2D] font-bold font-poppins mt-4"
               >
                 Se connecter
               </button>
@@ -244,6 +251,42 @@
 
         // Fallback: Start the animation after 6 seconds in case the video doesn't play
         setTimeout(startPreloader, 6000);
+      });
+    </script>
+    <!-- validate -->
+    <script>
+      const loginBtn = document.getElementById("loginBtn");
+      const passwordInput = document.getElementById("passwordBienvenue");
+      const passwordError = document.getElementById("passwordError");
+
+      loginBtn.addEventListener("click", (e) => {
+        e.preventDefault(); // prevent default form submission
+
+        const password = passwordInput.value.trim();
+        const correctPassword = "12345"; // change to your password
+
+        // Reset error
+        passwordError.classList.add("hidden");
+        passwordError.textContent = "";
+
+        // Validation
+        if (password === "") {
+          passwordError.textContent = "Veuillez entrer le mot de passe.";
+          passwordError.classList.remove("hidden");
+          passwordInput.focus();
+          return;
+        }
+
+        if (password !== correctPassword) {
+          passwordError.textContent = "Mot de passe incorrect. Réessayez !";
+          passwordError.classList.remove("hidden");
+          passwordInput.value = "";
+          passwordInput.focus();
+          return;
+        }
+
+        // ✅ Correct password → redirect
+        window.location.href = "onboarding.html"; // change to your target page
       });
     </script>
     <!-- <script>
