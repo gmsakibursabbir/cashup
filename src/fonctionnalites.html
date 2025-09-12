@@ -32,7 +32,8 @@
           />
         </a>
         <!-- button -->
-        <a href="index.html"
+        <a
+          href="index.html"
           class="finish-btn px-8 py-[10px] inline-flex flex-row items-center rounded-full gradiant-btn text-[#312C00] text-xs lg:text-lg font-semibold font-poppins shadow-md gap-[5px] lg:gap-4 cursor-pointer"
         >
           <svg
@@ -1324,7 +1325,7 @@
         alt="cloud"
         class="absolute top-0 -left-10 md:top-30 md:-left-40 z-20 max-w-[130px] md:min-w-[500px] reveal-left"
       />
-       <img
+      <img
         src="./img/connexion/nuit-0.png"
         alt="cloud"
         class="absolute top-60 left-[30%] md:top-[16%] md:left-50 z-20 max-w-[250px] md:min-w-[700px] reveal-left"
@@ -1334,12 +1335,12 @@
         alt="cloud"
         class="absolute top-[30%] -right-10 md:top-[30%] md:right-20 z-20 max-w-[189px] md:min-w-[700px] reveal-right"
       />
-       <img
+      <img
         src="./img/connexion/cloud-01.png"
         alt="cloud"
         class="absolute top-[40%] -left-10 md:top-[40%] md:-left-40 z-20 max-w-[189px] md:min-w-[700px] reveal-left"
       />
-       <img
+      <img
         src="./img/connexion/cloud-01.png"
         alt="cloud"
         class="absolute top-[60%] -right-10 md:top-[60%] md:-right-40 z-20 max-w-[189px] md:min-w-[700px] reveal-right"
@@ -1354,7 +1355,7 @@
         alt="cloud"
         class="absolute -bottom-30 right-10 md:-bottom-10 md:left-[32%] z-50 max-w-[189px] md:min-w-[400px] reveal-right"
       />
-        <img
+      <img
         src="./img/connexion/cloud-01.png"
         alt="cloud"
         class="absolute bottom-0 right-10 md:bottom-20 md:right-40 z-20 max-w-[189px] md:min-w-[300px] reveal-right"
@@ -1494,16 +1495,29 @@
         Maximale: "#06F",
       };
 
+      // === Exclusion List (h3 titles that should NOT show lock/blur) ===
+      const excludedTitles = ["Optimisation Avancée"];
+
       // Select all cards
       document.querySelectorAll(".card").forEach((card) => {
         const slider = card.querySelector(".slider");
         const label = card.querySelector(".slider-label");
+        const titleEl = card.querySelector("h3");
 
+        const lockEl = card.querySelector("img[alt='lock']")?.parentElement;
+        const blurEl = card.querySelector(".bg-cover-blur");
+
+        // ===== Lock + Blur Exclusion =====
+        if (titleEl && excludedTitles.includes(titleEl.textContent.trim())) {
+          if (lockEl) lockEl.style.display = "none"; // hide lock overlay
+          if (blurEl) blurEl.style.display = "none"; // hide blur background
+        }
+
+        // ===== Slider Label + Thumb Setup =====
         if (slider && label) {
           const level = slider.dataset.level;
           const value = parseFloat(slider.value);
 
-          // Position label based on slider value
           const min = parseFloat(slider.min) || 0;
           const max = parseFloat(slider.max) || 100;
           const percent = ((value - min) * 100) / (max - min);
@@ -1511,11 +1525,11 @@
           label.style.left = `calc(${percent}%)`;
           label.textContent = level;
 
-          // Set thumb inner color
           slider.style.setProperty("--thumb-inner", levelColors[level]);
         }
       });
     </script>
+
     <script src="./js/index.js"></script>
   </body>
 </html>

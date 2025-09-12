@@ -161,7 +161,7 @@ body {
 }
 
 .full-bg {
-  background: url("../img/full-bg.jpg") no-repeat top center;
+  background: url("../img/full-bg.webp") no-repeat top center;
   background-size: cover;
 }
 .degrade-gradiant {
@@ -299,4 +299,21 @@ body {
 
 .card-bottom:hover {
   transform: translateY(20px) !important; /* pushes card down */
+}
+
+.highlight-text::after {
+  content: "";
+  position: absolute;
+  top: 50%; /* adjust to place under/behind text */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px; /* control image size here */
+  height: 100px; /* control image size here */
+  background: url("../img/green-squre-two.png") no-repeat center/contain;
+  z-index: -1; /* sits behind the text */
+}
+
+.card {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }

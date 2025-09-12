@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="./css/style.min.css" />
   </head>
 
-  <body class="full-bg">
+  <body class="full-bg overflow-x-hidden">
     <!-- preloader -->
     <div
       class="fixed inset-0 w-full h-screen preloader-bg z-50 flex items-center justify-center"
@@ -70,7 +70,7 @@
     <!-- main -->
     <main>
       <!-- hero -->
-      <section class="overflow-hidden relative">
+      <section class="relative">
         <div class="pt-[66px] md:pt-[193px] pb-4">
           <div
             class="w-full md:max-w-[1158px] mx-auto px-5 flex flex-col lg:flex-row items-center justify-center relative z-40"
@@ -82,7 +82,12 @@
               <h1
                 class="text-[34px] md:text-4xl font-black text-[#FBFBFB] max-w-[475px]"
               >
-                Toutes les cartes sont entre vos mains
+                Toutes les cartes sont entre
+                <div
+                  class="relative inline-block highlight-text !z-20 text-[#2D2D2D]"
+                >
+                  vos mains
+                </div>
               </h1>
               <p
                 class="text-[#FBFBFB] font-medium text-lg md:text-2xl xl:max-w-[506px]"
@@ -99,7 +104,7 @@
               class="w-full md:w-1/2 flex flex-row space-y-8 md:space-y-0 md:space-x-8 items-center justify-center mt-10 lg:mt-0"
             >
               <div
-                class="w-full relative transform rotate-[-7deg] max-w-[300px] md:min-w-[320px] lg:min-w-[356px] -right-10 lg:-right-26 transition-all ease-linear duration-300 delay-150 hover:scale-110 hover:rotate-[0deg] hover:-right-8 hover:shadow-[0_0_50px_0_#FEDD6C,inset_0_0_20px_#FEDD6C] rounded-4xl"
+                class="cursor-pointer w-full relative transform rotate-[-7deg] max-w-[300px] md:min-w-[320px] lg:min-w-[356px] -right-10 lg:-right-26 transition-all ease-linear duration-300 delay-150 hover:scale-110 hover:rotate-[0deg] hover:-right-8 hover:shadow-[0_0_50px_0_#FEDD6C,inset_0_0_20px_#FEDD6C] rounded-4xl"
               >
                 <img
                   src="./img/home/card-yellow.png"
@@ -128,7 +133,7 @@
               </div>
 
               <div
-                class="w-full relative transform rotate-[7deg] max-w-[300px] md:min-w-[320px] lg:min-w-[356px] top-0 right-10 lg:right-0 transition-all ease-linear duration-300 delay-150 hover:scale-110 hover:rotate-[0deg] hover:right-8 hover:shadow-[0_0_50px_0_#83EFF8,inset_0_0_20px_#83EFF8] rounded-4xl"
+                class="cursor-pointer w-full relative transform rotate-[7deg] max-w-[300px] md:min-w-[320px] lg:min-w-[356px] top-0 right-10 lg:-top-10 lg:-right-5 transition-all ease-linear duration-300 delay-150 hover:scale-110 hover:rotate-[0deg] hover:right-8 hover:shadow-[0_0_50px_0_#83EFF8,inset_0_0_20px_#83EFF8] rounded-4xl"
               >
                 <img
                   src="./img/home/card-blue.png"
@@ -147,7 +152,7 @@
                       Correctifs
                     </h3>
                     <p
-                      class="text-[#1C424D] text-xs md:text-lg font-semibold w-[130px] md:w-full"
+                      class="text-[#1C424D] text-xs md:text-lg font-semibold font-montserrat w-[130px] md:w-full"
                     >
                       Identifiez et résolvez rapidement les problèmes pour
                       maintenir une efficacité optimale.
@@ -186,14 +191,14 @@
         </div>
         <!-- cloud -->
         <img
-          src="./img/connexion/cloud-04.png"
+          src="./img/connexion/nuit-0.png"
           alt="cloud"
           class="absolute top-0 -right-10 md:-top-10 md:right-60 z-20 max-w-[189px] md:min-w-[600px] cloud-right"
         />
         <img
-          src="./img/connexion/cloud-01.png"
+          src="./img/home/home-clb-01.png"
           alt="cloud"
-          class="absolute bottom-5 right-10 md:-bottom-30 md:right-20 z-50 md:z-20 max-w-[250px] md:min-w-[700px] cloud-right"
+          class="absolute top-0 left-10 md:-top-60 md:-left-60 z-50 md:z-20 max-w-[250px] md:min-w-[700px] cloud-right"
         />
         <img
           src="./img/connexion/nuit-0.png"
@@ -260,11 +265,11 @@
       </section>
       <!-- chats -->
       <section
-        class="pt-10 lg:pt-[82px] mb-[92px] lg:mb-0 overflow-hidden relative"
+        class="pt-10 lg:pt-[82px] pb-[92px] lg:pb-[100px] overflow-hidden relative"
         id="chats"
       >
         <h2
-          class="text-center text-[#4A7995] font-bold lg:font-black text-[30px] lg:text-[44px] relative z-40"
+          class="text-center text-[#2D2D2D] font-bold lg:font-black text-[30px] lg:text-[44px] relative z-40"
         >
           Avis collaborateurs
         </h2>
@@ -703,26 +708,26 @@
         <img
           src="./img/connexion/cloud-04.png"
           alt="cloud"
-          class="absolute top-30 -left-10 md:top-10 md:left-50 z-20 max-w-[189px] md:min-w-[500px] reveal-left"
+          class="absolute top-30 -left-10 md:top-10 md:-left-50 z-20 max-w-[189px] md:min-w-[500px] reveal-left"
         />
         <img
-          src="./img/connexion/cloud-04.png"
+          src="./img/home/home-clb-03.png"
           alt="cloud"
-          class="absolute bottom-0 right-10 md:bottom-10 md:right-20 z-20 max-w-[189px] md:min-w-[700px] reveal-right"
+          class="absolute bottom-0 right-10 md:bottom-10 md:right-20 z-20 max-w-[189px] md:min-w-[500px] reveal-right"
         />
         <img
-          src="./img/connexion/nuit-0.png"
+          src="./img/home/home-clb-02.png"
           alt="cloud"
           class="absolute bottom-0 -left-10 md:bottom-30 md:left-[30%] z-20 max-w-[189px] md:min-w-[500px] reveal-left"
         />
         <img
-          src="./img/connexion/cloud-04.png"
+          src="./img/home/home-clb-04.png"
           alt="cloud"
           class="absolute -bottom-30 right-10 md:-bottom-10 md:left-[32%] z-50 max-w-[189px] md:min-w-[400px] reveal-right"
         />
       </section>
     </main>
-    <footer class="lg:mt-[100px] h-[175px] md:h-[403px] lg:h-[663px] relative">
+    <footer class="h-[175px] md:h-[403px] lg:h-[663px] relative">
       <img
         src="./img/footers-bg.webp"
         alt="footer"

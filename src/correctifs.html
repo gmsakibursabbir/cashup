@@ -1495,16 +1495,29 @@
         Maximale: "#06F",
       };
 
+      // === Exclusion List (h3 titles that should NOT show lock/blur) ===
+      const excludedTitles = ["Optimisation Avancée"];
+
       // Select all cards
       document.querySelectorAll(".card").forEach((card) => {
         const slider = card.querySelector(".slider");
         const label = card.querySelector(".slider-label");
+        const titleEl = card.querySelector("h3");
 
+        const lockEl = card.querySelector("img[alt='lock']")?.parentElement;
+        const blurEl = card.querySelector(".bg-cover-blur");
+
+        // ===== Lock + Blur Exclusion =====
+        if (titleEl && excludedTitles.includes(titleEl.textContent.trim())) {
+          if (lockEl) lockEl.style.display = "none"; // hide lock overlay
+          if (blurEl) blurEl.style.display = "none"; // hide blur background
+        }
+
+        // ===== Slider Label + Thumb Setup =====
         if (slider && label) {
           const level = slider.dataset.level;
           const value = parseFloat(slider.value);
 
-          // Position label based on slider value
           const min = parseFloat(slider.min) || 0;
           const max = parseFloat(slider.max) || 100;
           const percent = ((value - min) * 100) / (max - min);
@@ -1512,7 +1525,6 @@
           label.style.left = `calc(${percent}%)`;
           label.textContent = level;
 
-          // Set thumb inner color
           slider.style.setProperty("--thumb-inner", levelColors[level]);
         }
       });
