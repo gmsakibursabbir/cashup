@@ -25,33 +25,3 @@ createRevealAnimation(".reveal-up", 0, 100);
 createRevealAnimation(".reveal-down", 0, -100);
 
 // page animation
-const page = document.querySelector(".page-transition");
-
-// --- Page Enter Animation (on load) ---
-window.addEventListener("load", () => {
-  gsap.set(page, { opacity: 0, y: 30 }); // start state
-  gsap.to(page, {
-    opacity: 1,
-    y: 0,
-    duration: 0.8,
-    ease: "power3.out",
-  });
-});
-
-// --- Page Exit Animation (before navigation) ---
-document.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", (e) => {
-    const href = link.getAttribute("href");
-
-    if (href && !href.startsWith("#") && !href.startsWith("javascript")) {
-      e.preventDefault();
-
-      const tl = gsap.timeline({
-        defaults: { duration: 0.6, ease: "power2.inOut" },
-        onComplete: () => (window.location.href = href),
-      });
-
-      tl.to(page, { opacity: 0, y: -30 }); // fade & slide up
-    }
-  });
-});
