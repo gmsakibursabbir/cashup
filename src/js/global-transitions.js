@@ -4,12 +4,20 @@
   let isTransitioning = false;
   const transitionDuration = 800;
 
-  // Inject CSS instantly
+  // ===== Skip preloader if returning to index =====
+  if (sessionStorage.getItem("returning-to-index") === "true") {
+    console.log("Skipping universal stripe preloader for returning-to-index");
+    sessionStorage.removeItem("returning-to-index");
+    document.documentElement.classList.remove("page-loading");
+    document.documentElement.style.opacity = "1";
+    return; // stop universal preloader
+  }
+
+  // ===== Inject CSS =====
   function injectPreloaderStyles() {
     if (document.getElementById("preloader-styles")) return;
 
     const css = `
-      /* Instant gradient background */
       #initial-preloader-bg {
         position: fixed;
         top: 0;
@@ -17,10 +25,8 @@
         width: 100vw;
         height: 100vh;
         z-index: 9997;
-        background: linear-gradient(0deg,rgba(108, 158, 186, 1) 0%, rgba(46, 90, 132, 1) 100%);
+        background: linear-gradient(0deg, rgba(108,158,186,1) 0%, rgba(46,90,132,1) 100%);
       }
-
-      /* Stripe overlay */
       #gradient-transition-overlay {
         position: fixed;
         top: 0;
@@ -31,36 +37,30 @@
         pointer-events: none;
         overflow: hidden;
       }
-
       .stripe {
         position: absolute;
         width: 100vw;
         height: 33.33vh;
         transition: transform ${transitionDuration}ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
       }
-
       .stripe-1 {
         top: 0;
         background: linear-gradient(135deg, #ffd93d 0%, #eab308 100%);
         transform: translateX(-100%);
       }
-
       .stripe-2 {
         top: 33.33vh;
         background: linear-gradient(135deg, #7ed321 0%, #22c55e 100%);
         transform: translateX(100%);
       }
-
       .stripe-3 {
         top: 66.66vh;
         background: linear-gradient(135deg, #4fc3f7 0%, #2563eb 100%);
         transform: translateX(-100%);
       }
-
       .stripe.animate-in { transform: translateX(0); }
       .stripe.animate-out { transform: translateX(100%); }
       .stripe-2.animate-out { transform: translateX(-100%); }
-
       .stripe::after {
         content: '';
         position: absolute;
@@ -75,7 +75,7 @@
     document.head.appendChild(style);
   }
 
-  // Create gradient background instantly
+  // ===== Create instant gradient background =====
   function createInstantBackground() {
     if (document.getElementById("initial-preloader-bg")) return;
     const bg = document.createElement("div");
@@ -83,7 +83,7 @@
     document.body.prepend(bg);
   }
 
-  // Stripe animations
+  // ===== Stripe animations =====
   function animateStripesIn(overlay) {
     const stripes = overlay.querySelectorAll(".stripe");
     setTimeout(() => stripes[0].classList.add("animate-in"), 0);
@@ -93,22 +93,25 @@
 
   function animateStripesOut(overlay, callback) {
     const stripes = overlay.querySelectorAll(".stripe");
-    setTimeout(() => {
-      stripes[0].classList.replace("animate-in", "animate-out");
-    }, 0);
-    setTimeout(() => {
-      stripes[1].classList.replace("animate-in", "animate-out");
-    }, 100);
-    setTimeout(() => {
-      stripes[2].classList.replace("animate-in", "animate-out");
-    }, 200);
+    setTimeout(
+      () => stripes[0].classList.replace("animate-in", "animate-out"),
+      0
+    );
+    setTimeout(
+      () => stripes[1].classList.replace("animate-in", "animate-out"),
+      100
+    );
+    setTimeout(
+      () => stripes[2].classList.replace("animate-in", "animate-out"),
+      200
+    );
     setTimeout(() => {
       overlay.remove();
       if (callback) callback();
     }, transitionDuration);
   }
 
-  // Show preloader on fresh load
+  // ===== Show preloader on fresh load =====
   function showStripePreloader() {
     const path = window.location.pathname;
     const isIndex =
@@ -117,6 +120,7 @@
       path.endsWith("/index.html") ||
       path === "" ||
       path.endsWith("/");
+
     if (isIndex || sessionStorage.getItem("navigating") === "true") {
       const bgElement = document.getElementById("initial-preloader-bg");
       if (bgElement) bgElement.remove();
@@ -146,7 +150,6 @@
 
     const minDisplayTime = 1000;
     const startTime = Date.now();
-
     const checkAndHide = () => {
       const elapsed = Date.now() - startTime;
       const remaining = Math.max(0, minDisplayTime - elapsed);
@@ -160,12 +163,21 @@
     }
   }
 
-  // Handle navigation clicks
+  // ===== Handle navigation clicks =====
   function handleLinkClick(event) {
     const link = event.target.closest("a");
-    if (!link) return;
+    const returnBtn = event.target.closest(".return-btn");
+    const element = link || returnBtn;
+    if (!element) return;
 
-    const href = link.getAttribute("href");
+    let href;
+    if (returnBtn) {
+      href = "./index.html";
+      sessionStorage.setItem("returning-to-index", "true");
+    } else {
+      href = link.getAttribute("href");
+    }
+
     if (
       !href ||
       href.startsWith("#") ||
@@ -173,11 +185,15 @@
       href.startsWith("tel:")
     )
       return;
-    if (link.hostname !== window.location.hostname && link.hostname !== "")
+    if (
+      link &&
+      link.hostname !== window.location.hostname &&
+      link.hostname !== ""
+    )
       return;
     if (
-      link.target === "_blank" ||
-      link.hasAttribute("download") ||
+      element.target === "_blank" ||
+      element.hasAttribute("download") ||
       event.metaKey ||
       event.ctrlKey
     )
@@ -206,10 +222,9 @@
     }, 400);
   }
 
-  // Handle page entrance
+  // ===== Handle page entrance =====
   function handlePageEntrance() {
     const fromTransition = sessionStorage.getItem("navigating") === "true";
-
     if (fromTransition) {
       createInstantBackground();
       const overlay = document.createElement("div");
@@ -235,11 +250,10 @@
       const bg = document.getElementById("initial-preloader-bg");
       if (bg) bg.remove();
     }
-
     sessionStorage.removeItem("navigating");
   }
 
-  // Init
+  // ===== Init =====
   function init() {
     injectPreloaderStyles();
     document.addEventListener("click", handleLinkClick);

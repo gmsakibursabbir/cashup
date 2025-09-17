@@ -752,96 +752,32 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <!-- load -->
     <script>
-      // Enhanced Index Page Script - Only for index.html
-      // This works together with the universal transition system
-
-      // Hide preloader immediately if we're skipping it (prevents flash)
-      (() => {
-        const skipPreloader =
-          sessionStorage.getItem("skipPreloader") === "true";
-        const returningToIndex =
-          sessionStorage.getItem("returning-to-index") === "true";
-
-        if (skipPreloader || returningToIndex) {
-          const preloader = document.getElementById("preloader");
-          if (preloader) {
-            preloader.style.display = "none";
-            preloader.style.visibility = "hidden";
-            preloader.style.opacity = "0";
-          }
-          // Show header logo immediately
-          const headerLogo = document.getElementById("logo");
-          if (headerLogo) {
-            headerLogo.style.opacity = "1";
-          }
-          // Add skip class to prevent any flash
-          document.documentElement.classList.add("skip-preloader");
-          document.body.classList.add("skip-preloader");
-        }
-      })();
-
-      window.addEventListener("load", () => {
+      window.addEventListener("DOMContentLoaded", () => {
         gsap.registerPlugin(ScrollTrigger);
 
         const preloader = document.getElementById("preloader");
         const preloaderLogo = document.getElementById("preloader-logo");
         const headerLogo = document.getElementById("logo");
 
-        // Check if we should skip preloader
+        // 1️⃣ Check if returning from .return-btn click
         const skipPreloader =
-          sessionStorage.getItem("skipPreloader") === "true";
-        const returningToIndex =
-          sessionStorage.getItem("returning-to-index") === "true";
+          sessionStorage.getItem("returningToIndex") === "true";
 
-        // Clear the flags after checking
-        sessionStorage.removeItem("skipPreloader");
-        sessionStorage.removeItem("returning-to-index");
-        sessionStorage.removeItem("navigating");
+        if (skipPreloader) {
+          if (preloader) preloader.style.display = "none";
+          if (headerLogo) headerLogo.style.opacity = "1";
+          document.documentElement.classList.add("skip-preloader");
+          document.body.classList.add("skip-preloader");
 
+          runHeroAnimations(() => {
+            sessionStorage.removeItem("returningToIndex");
+          });
+          return;
+        }
+
+        // 2️⃣ Normal preloader flow
         if (preloader && preloaderLogo && headerLogo) {
-          // Disable scroll initially
           document.body.style.overflow = "hidden";
-
-          if (skipPreloader || returningToIndex) {
-            // Skip preloader, just show a smooth fade-in transition
-            document.body.style.overflow = "";
-
-            // Remove loading class from universal system
-            document.documentElement.classList.remove("page-loading");
-
-            // Smoother page fade-in animation with special handling for return
-            const animationDuration = returningToIndex ? 0.6 : 0.8;
-            const animationDelay = returningToIndex ? 0 : 0;
-
-            gsap.fromTo(
-              "html",
-              {
-                autoAlpha: 0,
-                y: returningToIndex ? 0 : 20,
-              },
-              {
-                autoAlpha: 1,
-                y: 0,
-                duration: animationDuration,
-                ease: "power2.out",
-                delay: animationDelay,
-                onComplete: () => {
-                  // Run hero animations with delay
-                  setTimeout(() => {
-                    runHeroAnimations();
-                    ScrollTrigger.refresh();
-                  }, 100);
-                },
-              }
-            );
-
-            return;
-          }
-
-          // Normal preloader flow for first visit/reload
-          // Remove loading class from universal system
-          document.documentElement.classList.remove("page-loading");
-          document.documentElement.style.opacity = "1";
 
           const headerRect = headerLogo.getBoundingClientRect();
           const preRect = preloaderLogo.getBoundingClientRect();
@@ -857,30 +793,21 @@
             headerRect.top +
             headerRect.height / 2 -
             (preRect.top + preRect.height / 2);
-
           const windowHeight = window.innerHeight;
 
           const tl = gsap.timeline({
             onComplete: () => {
-              // Fade out preloader
               gsap.to(preloader, {
                 autoAlpha: 0,
                 duration: 0.5,
                 display: "none",
               });
-
-              // Re-enable scroll
               document.body.style.overflow = "";
-
-              // Refresh ScrollTrigger
               ScrollTrigger.refresh();
-
-              // Run hero animations
               runHeroAnimations();
             },
           });
 
-          // Preloader entrance animations
           tl.from(preloaderLogo, {
             y: -50,
             autoAlpha: 0,
@@ -895,10 +822,9 @@
             .from(
               "#grass-right",
               { y: 150, autoAlpha: 0, duration: 1.2, ease: "power2.out" },
-              "-=1.0"
+              "-=1"
             )
-            .to({}, { duration: 1.5 }) // pause ~1.5s
-            // Exit animations
+            .to({}, { duration: 1.5 }) // pause
             .to(
               ["#grass-left", "#grass-right"],
               {
@@ -912,9 +838,9 @@
             .to(
               preloaderLogo,
               {
-                x: x,
-                y: y,
-                scale: scale,
+                x,
+                y,
+                scale,
                 autoAlpha: 0.9,
                 duration: 0.8,
                 ease: "power3.inOut",
@@ -925,30 +851,16 @@
               },
               "exit+=0.2"
             );
-        } else {
-          // No preloader elements found, just show page normally
-          document.documentElement.classList.remove("page-loading");
-          document.documentElement.style.opacity = "1";
-          document.body.style.overflow = "";
-
-          // Run hero animations anyway
-          setTimeout(() => {
-            runHeroAnimations();
-            ScrollTrigger.refresh();
-          }, 100);
         }
 
-        // Hero animations function (extracted for reuse)
+        // 3️⃣ Hero animations function
         function runHeroAnimations() {
           const heroText = document.getElementById("hero-text");
           const heroCards = document.getElementById("hero-cards");
           const seeMoreBtn = document.getElementById("see-more");
-
           if (!heroText || !heroCards || !seeMoreBtn) return;
 
           const heroTl = gsap.timeline();
-
-          // Clouds
           heroTl
             .from(".cloud-left", {
               x: -120,
@@ -967,7 +879,6 @@
               },
               "-=0.4"
             )
-            // Hero content
             .from(heroText, {
               x: -80,
               autoAlpha: 0,
@@ -985,8 +896,18 @@
               "-=0.3"
             );
         }
+
+        // 4️⃣ Return button handler
+        document.addEventListener("click", (e) => {
+          const btn = e.target.closest(".return-btn");
+          if (!btn) return;
+          e.preventDefault();
+          sessionStorage.setItem("returningToIndex", "true");
+          window.location.href = "/"; // navigate to index
+        });
       });
     </script>
+
     <!-- video -->
     <script>
       gsap.registerPlugin(ScrollTrigger);
