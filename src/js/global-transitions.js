@@ -86,8 +86,8 @@
 
     // Stagger the animation
     setTimeout(() => stripes[0].classList.add("animate-in"), 0);
-    setTimeout(() => stripes[1].classList.add("animate-in"), 100);
-    setTimeout(() => stripes[2].classList.add("animate-in"), 200);
+    setTimeout(() => stripes[1].classList.add("animate-in"), 50);
+    setTimeout(() => stripes[2].classList.add("animate-in"), 50);
   }
 
   // Animate stripes out (for the destination page)
