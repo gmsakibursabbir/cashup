@@ -759,23 +759,94 @@
         const preloaderLogo = document.getElementById("preloader-logo");
         const headerLogo = document.getElementById("logo");
 
-        // 1️⃣ Check if returning from .return-btn click
-        const skipPreloader =
-          sessionStorage.getItem("returningToIndex") === "true";
+        // 3️⃣ Hero animations function
+        function runHeroAnimations(callback) {
+          const heroText = document.getElementById("hero-text");
+          const heroCards = document.getElementById("hero-cards");
+          const seeMoreBtn = document.getElementById("see-more");
 
-        if (skipPreloader) {
-          if (preloader) preloader.style.display = "none";
-          if (headerLogo) headerLogo.style.opacity = "1";
-          document.documentElement.classList.add("skip-preloader");
-          document.body.classList.add("skip-preloader");
+          if (!heroText || !heroCards || !seeMoreBtn) {
+            if (callback) callback();
+            return;
+          }
 
-          runHeroAnimations(() => {
-            sessionStorage.removeItem("returningToIndex");
+          const heroTl = gsap.timeline({
+            onComplete: callback || (() => {}),
           });
+
+          heroTl
+            .from(".cloud-left", {
+              x: -120,
+              autoAlpha: 0,
+              duration: 0.6,
+              ease: "power3.out",
+            })
+            .from(
+              ".cloud-right",
+              {
+                x: 120,
+                autoAlpha: 0,
+                duration: 0.6,
+                ease: "power3.out",
+                stagger: 0.15,
+              },
+              "-=0.4"
+            )
+            .from(heroText, {
+              x: -80,
+              autoAlpha: 0,
+              duration: 0.6,
+              ease: "power3.out",
+            })
+            .from(
+              heroCards,
+              { x: 80, autoAlpha: 0, duration: 0.6, ease: "power3.out" },
+              "-=0.4"
+            )
+            .from(
+              seeMoreBtn,
+              { y: 30, autoAlpha: 0, duration: 0.5, ease: "power3.out" },
+              "-=0.3"
+            );
+        }
+
+        // 1️⃣ Check ONLY if coming from return button - not for first time visits
+        const urlParams = new URLSearchParams(window.location.search);
+        const comingFromReturnBtn =
+          sessionStorage.getItem("returning-to-index") === "true";
+
+        console.log("Coming from return button:", comingFromReturnBtn); // Debug log
+
+        if (comingFromReturnBtn) {
+          console.log("Skipping index preloader - came from return button"); // Debug log
+
+          // Hide index preloader immediately - global script already showed stripe transition
+          if (preloader) {
+            preloader.style.display = "none";
+            preloader.style.visibility = "hidden";
+            preloader.style.opacity = "0";
+          }
+          if (headerLogo) {
+            headerLogo.style.opacity = "1";
+            headerLogo.style.visibility = "visible";
+          }
+
+          // Ensure body overflow is not hidden
+          document.body.style.overflow = "";
+
+          // Clean up the flag
+          sessionStorage.removeItem("returning-to-index");
+
+          // Run hero animations immediately (no callback needed)
+          runHeroAnimations();
           return;
         }
 
-        // 2️⃣ Normal preloader flow
+        // 2️⃣ Normal index preloader flow (first time visitors & hard refresh)
+        console.log(
+          "Running normal index preloader for first time visitor/hard refresh"
+        );
+
         if (preloader && preloaderLogo && headerLogo) {
           document.body.style.overflow = "hidden";
 
@@ -851,60 +922,15 @@
               },
               "exit+=0.2"
             );
+        } else {
+          // Fallback if elements don't exist
+          document.body.style.overflow = "";
+          runHeroAnimations();
         }
 
-        // 3️⃣ Hero animations function
-        function runHeroAnimations() {
-          const heroText = document.getElementById("hero-text");
-          const heroCards = document.getElementById("hero-cards");
-          const seeMoreBtn = document.getElementById("see-more");
-          if (!heroText || !heroCards || !seeMoreBtn) return;
-
-          const heroTl = gsap.timeline();
-          heroTl
-            .from(".cloud-left", {
-              x: -120,
-              autoAlpha: 0,
-              duration: 0.6,
-              ease: "power3.out",
-            })
-            .from(
-              ".cloud-right",
-              {
-                x: 120,
-                autoAlpha: 0,
-                duration: 0.6,
-                ease: "power3.out",
-                stagger: 0.15,
-              },
-              "-=0.4"
-            )
-            .from(heroText, {
-              x: -80,
-              autoAlpha: 0,
-              duration: 0.6,
-              ease: "power3.out",
-            })
-            .from(
-              heroCards,
-              { x: 80, autoAlpha: 0, duration: 0.6, ease: "power3.out" },
-              "-=0.4"
-            )
-            .from(
-              seeMoreBtn,
-              { y: 30, autoAlpha: 0, duration: 0.5, ease: "power3.out" },
-              "-=0.3"
-            );
-        }
-
-        // 4️⃣ Return button handler
-        document.addEventListener("click", (e) => {
-          const btn = e.target.closest(".return-btn");
-          if (!btn) return;
-          e.preventDefault();
-          sessionStorage.setItem("returningToIndex", "true");
-          window.location.href = "/"; // navigate to index
-        });
+        // 4️⃣ Return button handler - Remove this from index page
+        // This should only be on OTHER pages, not index page
+        // The global script handles return button clicks
       });
     </script>
 

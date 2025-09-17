@@ -7,7 +7,8 @@
   // ===== Skip preloader if returning to index =====
   if (sessionStorage.getItem("returning-to-index") === "true") {
     console.log("Skipping universal stripe preloader for returning-to-index");
-    sessionStorage.removeItem("returning-to-index");
+    // DON'T remove the flag here - let index script handle it
+    // sessionStorage.removeItem("returning-to-index"); // REMOVED
     document.documentElement.classList.remove("page-loading");
     document.documentElement.style.opacity = "1";
     return; // stop universal preloader
@@ -121,7 +122,10 @@
       path === "" ||
       path.endsWith("/");
 
-    if (isIndex || sessionStorage.getItem("navigating") === "true") {
+    // UPDATED: Also skip if returning to index (let index handle its own preloader)
+    if (isIndex || 
+        sessionStorage.getItem("navigating") === "true" ||
+        sessionStorage.getItem("returning-to-index") === "true") {
       const bgElement = document.getElementById("initial-preloader-bg");
       if (bgElement) bgElement.remove();
       return;
@@ -172,8 +176,10 @@
 
     let href;
     if (returnBtn) {
-      href = "./index.html";
+      // UPDATED: Use consistent path format
+      href = "/"; // or "./index.html" depending on your setup
       sessionStorage.setItem("returning-to-index", "true");
+      console.log("Return button clicked - set returning-to-index flag");
     } else {
       href = link.getAttribute("href");
     }
@@ -203,7 +209,10 @@
     if (isTransitioning) return;
     isTransitioning = true;
 
-    sessionStorage.setItem("navigating", "true");
+    // UPDATED: Don't set navigating flag when returning to index
+    if (!returnBtn) {
+      sessionStorage.setItem("navigating", "true");
+    }
 
     createInstantBackground();
     const overlay = document.createElement("div");
